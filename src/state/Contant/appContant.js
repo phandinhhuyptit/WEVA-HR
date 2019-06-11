@@ -1,0 +1,1 @@
+export const changeToggleCollapsed = " CHANGE_TOOGLE_COLLAPSED "
