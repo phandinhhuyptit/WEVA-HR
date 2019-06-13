@@ -1,90 +1,125 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Menu, Icon, Button } from 'antd';
+import FormOffer from './Form/formOffer';
+import { Layout, Menu, Icon, Button, Checkbox } from 'antd';
 import { connect } from 'react-redux';
+import * as effectAction from '../../state/Action/effectAction';
+
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
-
 class sider extends Component {
     static propTypes = {
-        toggleCollapsed: PropTypes.bool.isRequired
+        toggleCollapsed: PropTypes.bool.isRequired,
+        onTurnOnOrOffForFormOfferAndBackgroundBody: PropTypes.func.isRequired,
+        stateOfBackgroundAndFormOffer: PropTypes.bool.isRequired
     }
-
+    changeStateOfBackGroundAndFormOffer = () => {
+        this.props.onTurnOnOrOffForFormOfferAndBackgroundBody();
+    }
     render() {
+        const backGroundBody = <div className="backgroundBody" style={{
+            width: '100%',
+            height: '100%',
+            position: 'fixed',
+            backgroundColor: 'rgba(74, 71, 71, 0.52)',
+            zIndex: '1'
+        }} onClick={() => this.changeStateOfBackGroundAndFormOffer()} />
+
         return (
-            <Sider trigger={null} collapsible collapsed={this.props.toggleCollapsed} width={200} style={{ background: "#fff" }}>
-
-
-                <Menu
-                    mode="inline"
-                    defaultSelectedKeys={["1"]}
-                    defaultOpenKeys={["sub1"]}
-                    style={{ height: "100%", borderRight: 0 }}
-
-                >
-
-
-
-
-
+            <Sider trigger={null} width={200} style={{ background: "#fff" }}>
+                {
+                    this.props.stateOfBackgroundAndFormOffer ? backGroundBody : ''
+                }
+                {
+                    this.props.stateOfBackgroundAndFormOffer ? <FormOffer /> : ''
+                }
+                <Menu mode="inline" defaultSelectedKeys={["1"]} defaultOpenKeys={["sub1"]}
+                    style={{ height: "100%", borderRight: 0 }}>
                     <Menu.Item>
                         <Button style={{
                             color: '#fff',
                             backgroundColor: '#5cb85c',
                             borderColor: '#4cae4c'
-                        }} icon="plus">
+                        }} icon="plus" onClick={() => this.changeStateOfBackGroundAndFormOffer()} >
                             Tạo Đề Xuất Mới
                         </Button>
                     </Menu.Item>
-                    <Menu.Item key="1">
-                        <Icon type="pie-chart" />
-                        <span>Option 1</span>
+                    <Menu.Item>
+                        <Checkbox>
+                            Gửi Đến Tôi
+                       </Checkbox>
                     </Menu.Item>
-                    <Menu.Item key="2">
-                        <Icon type="desktop" />
-                        <span>Option 2</span>
+
+                    <Menu.Item>
+                        <Checkbox>
+                            Tôi Gửi Đi
+                        </Checkbox>
                     </Menu.Item>
-                    <Menu.Item key="3">
-                        <Icon type="inbox" />
-                        <span>Option 3</span>
+
+                    <Menu.Item>
+
+                        <Checkbox>
+
+                            Đang Theo Dõi
+
+            </Checkbox>
+
                     </Menu.Item>
-                    <SubMenu
-                        key="sub1"
-                        title={
-                            <span>
-                                <Icon type="user" />
-                                {`${!this.props.toggleCollapsed ? 'User' : ''}`}
-                            </span>
-                        }
+                    <Menu.Divider style={{ width: '170px', margin: 'auto' }} />
+
+                    <SubMenu key="sub1" title={<span>
+                        <Icon type="unordered-list" />
+                        Quan Trọng
+                         </span>
+
+                    }
                     >
-                        <Menu.Item key="option1">option1</Menu.Item>
-                        <Menu.Item key="option2">option2</Menu.Item>
-                        <Menu.Item key="option3">option3</Menu.Item>
-                        <Menu.Item key="option4">option4</Menu.Item>
-                    </SubMenu>
-                    <SubMenu
-                        key="sub2"
-                        title={
+                        <Menu.Item key="option1">
                             <span>
-                                <Icon type="laptop" />
-                                {`${!this.props.toggleCollapsed ? 'LapTop' : ''}`}
+                                <Icon type="menu" />
+                                Tất Cả Đề Xuất
                             </span>
-                        }
+                        </Menu.Item>
+                        <Menu.Item key="option2">
+                            <span>
+                                <Icon type="clock-circle" />
+                                Đang Chờ Duyệt
+                            </span>
+
+
+                        </Menu.Item>
+                        <Menu.Item key="option3">
+                            <span>
+                                <Icon type="check-circle" />
+                                Đã Phê Duyệt
+
+                              </span>
+                        </Menu.Item>
+                        <Menu.Item key="option4">
+                            <span>
+                                <Icon type="close-circle" />
+                                Đã Từ Chối
+                            </span>
+                        </Menu.Item>
+                        <Menu.Divider style={{ width: '170px', margin: 'auto' }} />
+                    </SubMenu>
+                    <SubMenu key="sub2" title={<span>
+                        <Icon type="star" />
+                    </span>}
                     >
                         <Menu.Item key="5">option5</Menu.Item>
                         <Menu.Item key="6">option6</Menu.Item>
                         <Menu.Item key="7">option7</Menu.Item>
                         <Menu.Item key="8">option8</Menu.Item>
                     </SubMenu>
-                    <SubMenu
-                        key="sub3"
-                        title={
-                            <span>
-                                <Icon type="notification" />
-                                {`${!this.props.toggleCollapsed ? 'Thông Báo' : ''}`}
-                            </span>
-                        }
+                    <SubMenu key="sub3" title={
+
+                        <span>
+                            <Icon type="notification" />
+                            Thông Báo
+                        </span>
+                    }
                     >
                         <Menu.Item key="9">option9</Menu.Item>
                         <Menu.Item key="10">option10</Menu.Item>
@@ -98,14 +133,16 @@ class sider extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
     return {
-        toggleCollapsed: state.app.toggleCollapsedOfSider
+        toggleCollapsed: state.app.toggleCollapsedOfSider,
+        stateOfBackgroundAndFormOffer: state.effect.backGroundBodyAndFormOffer
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        dispatch1: () => {
-
+        onTurnOnOrOffForFormOfferAndBackgroundBody: () => {
+            dispatch(effectAction.turnOnOrOffForFormOfferAndBackgroundBody())
         }
     }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(sider);

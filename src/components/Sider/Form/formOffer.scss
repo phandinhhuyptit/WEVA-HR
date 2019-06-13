@@ -1,0 +1,19 @@
+.formOffer{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 500px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+    z-index: 2;
+    .inconFormOffer{
+
+        position:absolute;
+        left: 96%;
+        top: 2%;
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+}

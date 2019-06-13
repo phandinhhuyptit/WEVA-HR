@@ -19,7 +19,8 @@ const menuProfile = (
 )
 class header extends Component {
     static propTypes = {
-        onToggleCollapse: PropTypes.func.isRequired
+        onToggleCollapse: PropTypes.func.isRequired,
+        toggleCollapsed: PropTypes.bool.isRequired
     }
     state = {
 
