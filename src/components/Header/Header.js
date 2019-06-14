@@ -84,8 +84,8 @@ class header extends Component {
                                 height: '20px',
                                 display: 'flex',
                                 border: '1px solid red',
-                                justifyContent: 'center'
-
+                                justifyContent: 'center',
+                                zIndex : '0'
                             }}>
                                 <Icon type='bell' style={{ fontSize: '19px', color: 'white', marginRight: '0px' }} />
                             </Badge>

@@ -18,19 +18,10 @@ class sider extends Component {
         this.props.onTurnOnOrOffForFormOfferAndBackgroundBody();
     }
     render() {
-        const backGroundBody = <div className="backgroundBody" style={{
-            width: '100%',
-            height: '100%',
-            position: 'fixed',
-            backgroundColor: 'rgba(74, 71, 71, 0.52)',
-            zIndex: '1'
-        }} onClick={() => this.changeStateOfBackGroundAndFormOffer()} />
-
+  
         return (
             <Sider trigger={null} width={200} style={{ background: "#fff" }}>
-                {
-                    this.props.stateOfBackgroundAndFormOffer ? backGroundBody : ''
-                }
+                
                 {
                     this.props.stateOfBackgroundAndFormOffer ? <FormOffer /> : ''
                 }
@@ -86,8 +77,6 @@ class sider extends Component {
                                 <Icon type="clock-circle" />
                                 Đang Chờ Duyệt
                             </span>
-
-
                         </Menu.Item>
                         <Menu.Item key="option3">
                             <span>
@@ -99,7 +88,7 @@ class sider extends Component {
                         <Menu.Item key="option4">
                             <span>
                                 <Icon type="close-circle" />
-                                Đã Từ Chối
+                                Đã Từ Chối 
                             </span>
                         </Menu.Item>
                         <Menu.Divider style={{ width: '170px', margin: 'auto' }} />

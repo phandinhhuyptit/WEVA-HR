@@ -1,0 +1,23 @@
+$width-name: max-device-width;
+$Extra-small : 480px;
+$Small : 566px;
+$Medium : 768px;
+$Large : 992px;
+$Extra-large : 1200px;
+
+
+
+.listOffers {
+
+    width: 100%;
+    height: 100%;
+
+    .infoOffers {
+        @media only screen and (max-width : 480px) {
+            display: block!important;
+            padding-left: 24px;        
+        }    
+
+    }
+        
+}

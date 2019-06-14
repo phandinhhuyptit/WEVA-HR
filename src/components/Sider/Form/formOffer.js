@@ -57,7 +57,7 @@ export class offerForm extends Component {
 
                         backgroundColor: 'rgb(234, 234, 234)',
                         margin: '0',
-                        padding: '5px',
+                        padding: '8px',
                         fontSize: '14px',
 
 
@@ -75,7 +75,7 @@ export class offerForm extends Component {
                     onSubmit={this.handleSubmit}
                 >
 
-                    <Form.Item style={{ width: '100%' }} label="Họ Và Tên" hasFeedback>
+                    <Form.Item  style={{ width: '100%',fontWeight : '600' }} label="Họ Và Tên" hasFeedback>
 
                         {getFieldDecorator('userName', {
                             rules: [
@@ -86,7 +86,7 @@ export class offerForm extends Component {
                             ],
                         })(<Input type='text' placeholder="Họ Và Tên" />)}
                     </Form.Item>
-                    <Form.Item style={{ width: '100%' }} label='Tên Đề Xuất' hasFeedback>
+                    <Form.Item style={{ width: '100%',fontWeight : '600' }} label='Tên Đề Xuất' hasFeedback>
                         {getFieldDecorator('nameOffer', {
                             rules: [
                                 {
@@ -98,7 +98,7 @@ export class offerForm extends Component {
                             ],
                         })(<Input type='text' placeholder="Tên Đề Xuất" />)}
                     </Form.Item>
-                    <Form.Item style={{ width: '100%' }} label="Lí Do" hasFeedback>
+                    <Form.Item style={{ width: '100%',fontWeight : '600' }} label="Lí Do" hasFeedback>
                         {getFieldDecorator('reason', {
                             rules: [
                                 {
@@ -110,14 +110,14 @@ export class offerForm extends Component {
                             ],
                         })(<TextArea rows={4} placeholder="Lý Do Nghỉ" />)}
                     </Form.Item>
-                    <Form.Item label="Ngày Nghỉ"
+                    <Form.Item label="Ngày Nghỉ" style={{fontWeight : '600'}}
                         hasFeedback
                     >
                         {getFieldDecorator('dayOff', rangeConfig)(<RangePicker />)}
                     </Form.Item>
                     <Form.Item label="Người Xử Lý" hasFeedback
 
-                        style={{ width: '100%' }}
+                        style={{ width: '100%',fontWeight : '600' }}
                     >
                         {getFieldDecorator('selectHandlePosition', {
                             rules: [{ required: true, message: 'Please select your country!' }],
@@ -133,7 +133,8 @@ export class offerForm extends Component {
                         wrapperCol={{
                             xs: { span: 24 },
                             sm: { span: 24 },
-                        }}
+                        }}  
+                        
                     >
                         <Row>
                             <Col xs={{ span: 24 }} sm={{ span: 11, offset: 1 }}  >

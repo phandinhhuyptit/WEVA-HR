@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Layout } from 'antd';
-const { Content } = Layout
+import ListOffers from './ListOffers/ListOffers';
 
+
+
+const { Content } = Layout;
 class content extends Component {
     static propTypes = {
         prop: PropTypes
@@ -12,12 +15,15 @@ class content extends Component {
             <Content
                 style={{
                     background: "#fff",
-                    padding: 24,
+                    padding:'0px 10px 0px ',
                     margin: 0,
-                    minHeight: 280
+                    minHeight: 280,
+                    overflow : 'hidden'
                 }}
+                
             >
-                Content
+                <ListOffers/>
+           
         </Content>
         )
     }
