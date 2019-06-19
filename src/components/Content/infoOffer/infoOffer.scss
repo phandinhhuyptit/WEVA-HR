@@ -1,0 +1,41 @@
+
+
+
+
+.infoOffer {
+  .button {
+    .Accept {
+      &:hover {
+        color: #fff!important;
+        background-color:rgb(110, 162, 0)!important;
+        border-color: #1e7e34!important;
+      }
+    }
+    .Forward {
+
+        &:hover {
+            color: #fff!important;
+            background-color: #218838!important;
+            border-color: #1e7e34!important;
+          }
+
+    }
+    .Deny {
+
+        &:hover {
+            color: #fff!important;
+            background-color: #c82333!important;
+            border-color: #bd2130!important;
+        }
+
+    }
+ 
+  }
+  .inputMsg{
+    input[type='text']{
+      border: none!important;
+      box-shadow: none!important;  
+    } 
+}
+
+}

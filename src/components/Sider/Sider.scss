@@ -1,25 +1,84 @@
+.ant-layout.ant-layout-has-sider { 
+  .ant-layout-sider.ant-layout-sider-dark {
+    .ant-menu.ant-menu-inline.Menu{
+     
+    .Notification {
 
-.Layout {
-    
-        .logo {
-            height: 32px;
-            background: rgba(255, 255, 255, 0.2);
-            margin: 16px;
+        @media only screen and ( max-width : 768px) {
+            
+            display: block!important;
+
         }
-            Icon.trigger{
+    }
+    .Search {
 
-                font-size: 18px;
-                line-height: 64px;
-                padding: 0 24px;
-                cursor: pointer;
-                transition: color 0.3s;
-                &:hover {
-                    color: #1890ff;   
-                    
-                }
+        @media only screen and ( max-width : 768px) {
+            
+            display: block!important;
 
-            }      
+        }
 
+    }
+    background-color:rgba(0, 0, 0, 0);    
+    input[type='text']::placeholder {
+        font-size: 13px;
+    }
+
+    }
+    .ant-menu-item-selected{
+        background-color: white;
+    }
+    .ant-menu-item-selected{
+        color: rgb(16, 191, 16);   
+    }
+    .ant-menu-item-active {
+        color: rgb(16, 191, 16)!important;
+       
+    }
+    .ant-menu-submenu-active {
+        font-size : 50px;
+        color: rgb(16, 191, 16)!important;
+       
+    }
+    .ant-checkbox-checked .ant-checkbox-inner {
+
+        background-color:rgb(16, 191, 16);
+        border-color:rgb(16, 191, 16);      
+
+    }
+    .ant-checkbox-wrapper:hover .ant-checkbox-inner,.ant-checkbox:hover .ant-checkbox-inner,.ant-checkbox-input:focus + .ant-checkbox-inner {
+        border-color:rgb(16, 191, 16);     
+
+    }
+  }
 }
 
+.fade-appear,
+.fade-enter {
+  transform: scale(0) translate(-100%, -100%);
+}
+.fade-appear.fade-appear-active,
+.fade-enter.fade-enter-active {
+  visibility: visible;
+  transition: transform 300ms ease;
 
+  transform: scale(1) translate(-50%, -50%);
+}
+.fade-appear-done,
+.fade-enter-done {
+  transform: scale(1) translate(-50%, -50%);
+  visibility: visible;
+}
+.fade-exit {
+  transform: scale(1) translate(-50%, -50%);
+}
+.fade-exit.fade-exit-active {
+  transform: scale(0) translate(-50%, -50%);
+  transition: transform 300ms ease;
+  visibility: hidden;
+}
+.fade-exit-done {
+  transform: scale(0);
+
+  visibility: hidden;
+}

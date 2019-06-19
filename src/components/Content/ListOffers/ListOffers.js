@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './ListOffers.scss';
 import { List, Checkbox } from 'antd';
-
-
+import * as effectAction from '../../../state/Action/effectAction';
 
 const listData = [];
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 51; i++) {
     listData.push({
         href: 'http://ant.design',
         key: i,
@@ -18,18 +17,39 @@ for (let i = 0; i < 50; i++) {
 }
 export class ListOffers extends Component {
     static propTypes = {
-        prop: PropTypes
+        onOpenInfoOffer: PropTypes.func.isRequired
     }
+    constructor(props) {
+        super(props)
 
+        this.state = {
+
+            indexCurrentOfListOffer: null
+
+        }
+    }
+    openInfoOffer = (e) => {
+
+        this.setState({
+
+            indexCurrentOfListOffer: e.currentTarget.attributes['data-tag'].value
+
+        })
+        if (!this.props.listOfferAndInfoOffer) {
+
+            this.props.onOpenInfoOffer();
+        }
+    }
     render() {
         return (
-            <div className='listOffers'   >
+            <div className={`listOffers ${this.props.listOfferAndInfoOffer ? 'activeSmallList' : ''}`}   >
                 <h2
-                  style={{
+                    style={{
 
-                    marginTop : '8px'
-                  }}  
-                
+                        marginTop: '8px',
+                        paddingLeft : '8px'
+                    }}
+
                 > Danh Sách Đề Xuất</h2>
                 <List
                     itemLayout=""
@@ -39,8 +59,10 @@ export class ListOffers extends Component {
                     }}
                     dataSource={listData}
                     renderItem={item => (
-                        <List.Item
-                            key={item.key}
+                        <List.Item class={`${parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeHighLight' : 'ant-list-item'}`}
+                            style={{
+                                padding: '8px 8px 8px'
+                            }}
                         >
                             <Checkbox style={{
 
@@ -48,42 +70,39 @@ export class ListOffers extends Component {
                                 textOverflow: 'ellipsis',
                                 overflow: 'hidden',
                                 position: 'relative',
-                                width : '100%'
+                                width: '100%'
 
-                            }} >
-                                <span style={{
-
-                                   float : 'right',
-                                   font : '16px'
-
-                                }}>
+                            }} onClick={(e) => this.openInfoOffer(e)} data-tag={item.key} >
+                                <span class={parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeFont' : ''}
+                                    style={{
+                                        float: 'right',
+                                        font: '16px'
+                                    }}>
                                     Feb 26
 
                                 </span>
-                                <span style={{
-
-                                    fontSize: '14px',
-                                    color: 'black',
-
-                                }}>
+                                <span class={parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeFont' : ''}
+                                    style={{
+                                        fontSize: '14px',
+                                        color: 'black',
+                                    }}>
                                     {`${item.title} `}
 
                                 </span>
-                                <span className='infoOffers' style={{
-
-                                    fontSize: '10px',
-                                    fontWeight: '400',
-                                    color: 'gray',
-                                    whiteSpace: 'nowrap',
-                                    textOverflow: 'ellipsis',
-                                    overflow: 'hidden',
-                                    position: 'relative'
-
-                                }} >
+                                <span className={`infoOffers ${this.props.listOfferAndInfoOffer ? 'activeChangeShapeOfInfoOffers' : ''} 
+                                     ${ parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeFont' : ''} `}
+                                    style={{
+                                        fontSize: '10px',
+                                        fontWeight: '400',
+                                        color: 'gray',
+                                        whiteSpace: 'nowrap',
+                                        textOverflow: 'ellipsis',
+                                        overflow: 'hidden',
+                                        position: 'relative'
+                                    }} >
                                     {`Lý Do Nghỉ : ${item.description}`}
                                 </span>
                             </Checkbox>
-
                         </List.Item>
                     )}
                 >
@@ -92,14 +111,20 @@ export class ListOffers extends Component {
         )
     }
 }
+const mapStateToProps = state => {
 
-const mapStateToProps = (state) => ({
+    return {
+        listOfferAndInfoOffer: state.effect.listOfferAndInfoOffer
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        onOpenInfoOffer: () => {
 
+            dispatch(effectAction.openInfoOffer())
+        }
 
-})
-
-const mapDispatchToProps = {
-
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListOffers)

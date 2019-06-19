@@ -7,3 +7,19 @@ export const turnOnOrOffForFormOfferAndBackgroundBody = () =>{
             type :   effectAction.turnOnOrOffBackgroundBodyAndFormOffer
         }
 }
+export const openInfoOffer =() =>{
+
+        return {
+
+            type: effectAction.openInfoOffer
+        }
+}
+export const closeInfoOffer = () =>{
+
+        return {
+
+
+            type : effectAction.closeInfoOffer
+        }
+}
+

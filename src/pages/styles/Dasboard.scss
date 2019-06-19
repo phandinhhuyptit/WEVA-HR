@@ -1,0 +1,36 @@
+
+.backgroundBody {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.BackGround-enter {
+
+    opacity: 0;
+    visibility: hidden;
+}
+.BackGround-enter.BackGround-enter-active {
+
+    opacity : 1;
+    visibility : visible;
+    transition: opacity 300ms linear;
+}
+.BackGround-enter-done {
+
+    opacity : 1!important;
+    visibility: visible;
+
+}
+.BackGround-exit {
+    opacity: 1;
+}
+.BackGround-exit-active {
+    opacity : 0;
+    visibility : hidden;
+    transition: opacity 300ms linear;
+}
+.BackGround-exit-done {
+    opacity: 0!important;
+    visibility: hidden;   
+}
+

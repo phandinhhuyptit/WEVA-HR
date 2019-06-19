@@ -9,7 +9,9 @@ import Content from '../components/Content/Content';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import 'antd/dist/antd.css';
+import { CSSTransition  } from 'react-transition-group';
 import * as effectAction from '../state/Action/effectAction';
+import './styles/Dasboard.scss';
 class IndexPage extends Component {
   static propTypes = {
     stateOfBackgroundAndFormOffer: PropTypes.bool.isRequired,
@@ -26,19 +28,33 @@ class IndexPage extends Component {
       height: '100%',
       position: 'fixed',
       backgroundColor: 'rgba(74, 71, 71, 0.52)',
-      zIndex: '1'
+      zIndex: '1',
     }} onClick={() => this.changeStateOfBackGroundAndFormOffer()} />
-    
-
     return (
       <LayoutPage>
-      <SEO title="Dasboard"/>
-        {
-          this.props.stateOfBackgroundAndFormOffer ? backGroundBody : ''
-        }
+      <SEO title="Dasboard"/>        
+          <CSSTransition          
+          classNames="BackGround"          
+          in={this.props.stateOfBackgroundAndFormOffer}
+          timeout={500}              
+          enter = {true}
+          exit = {true}
+          onEnter = { () => console.log("On Enter")}
+          onEntering = {() => console.log("On Entering")}
+          onEntered = {() => console.log("On Entered")}
+          onExit = { () =>console.log("On Exit")}
+          onExiting = {() => console.log("On Exiting")}
+          onExited = {() => console.log(" On Exited")}               
+          >
+              {
+                backGroundBody
+              }
+          </CSSTransition>      
       <Layout>
         <Header />
-        <Layout>
+        <Layout style={{   
+          boxShadow:'0 1px 4px rgba(0, 0, 0, 0.3)'
+        }} >
           <Sider />
           <Content />
         </Layout>
@@ -47,9 +63,6 @@ class IndexPage extends Component {
     )
   }
 }
-
-
-
 const mapStateToProps = (state) => ({
 
   stateOfBackgroundAndFormOffer: state.effect.backGroundBodyAndFormOffer

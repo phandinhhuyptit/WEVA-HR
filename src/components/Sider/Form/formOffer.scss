@@ -4,9 +4,10 @@
     top: 50%;
     width: 500px;
     height: auto;
-    transform: translate(-50%, -50%);
     border-radius: 2px;
     z-index: 2;
+    text-replace: scale(0);
+    visibility: hidden;
     .inconFormOffer{
 
         position:absolute;

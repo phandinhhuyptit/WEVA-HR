@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Layout } from 'antd';
 import ListOffers from './ListOffers/ListOffers';
-
-
+import InfoOffers from './infoOffer/infoOffer';
+import {connect} from 'react-redux';
 
 const { Content } = Layout;
 class content extends Component {
@@ -12,20 +12,28 @@ class content extends Component {
     }
     render() {
         return (
-            <Content
+            <Content 
                 style={{
                     background: "#fff",
-                    padding:'0px 10px 0px ',
+                    padding:'0px 0px 0px ',
                     margin: 0,
                     minHeight: 280,
-                    overflow : 'hidden'
-                }}
-                
+                    overflow : 'hidden',
+                    display :'inline-flex',
+                    borderLeft: '0.5px solid #c7c7c7bf'    
+                }}               
             >
                 <ListOffers/>
-           
+                { this.props.listOfferAndInfoOffer ? <InfoOffers/> :''}      
         </Content>
         )
     }
 }
-export default content;
+const mapStateToProps = state => {
+   
+    return {
+        listOfferAndInfoOffer : state.effect.listOfferAndInfoOffer 
+    }
+}
+
+export default connect(mapStateToProps, null)(content)

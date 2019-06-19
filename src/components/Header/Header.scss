@@ -1,65 +1,74 @@
-
-@mixin borderRadiusAndSolid ( $property, $radius ) {
-
-    border-radius : $radius;
-    border : $property;
+@mixin borderRadiusAndSolid($property, $radius) {
+  border-radius: $radius;
+  border: $property;
 }
+
 .header {
-
-    .logo{
-
-
+  background-color: #29501d !important;
+  .Logo {
+    @media only screen and (max-width: 768px) {
+      display: none !important;
     }
-    
-    .Profile {
-
-            float: right;        
-
-            img {
-                width: 40px;
-                height: 40px;
-                border-radius: 20px;
-            }
-            .infoUser {
-                padding-left: 10px;
-    
-                .nameUser{
-                        
-                    color: white;
-        
-                }
-                
-            }
-    
-        }
-    span.search {
-        position: relative;
-        
-
-        .iconSearch {
-            left: 4px;
-            position: absolute;
-            top: 2px;
-            font-size: 16px;
-        }
+  }
+  .Search {
+    @media only screen and (max-width: 768px) {
+      display: none !important;
     }
-    
-  
-    input[type ='text'] {
-
-        border-radius: 5px;
-        height: 34px;
-        @include borderRadiusAndSolid(1px solid black , 2px );
-        width : 300px;
-        padding-left: 22px;
+    .ant-input-affix-wrapper {
+      @media only screen and (max-width: 992px) {
+          width: 300px!important;
+      }
     }
-    ul {
-
-        li:nth-child(2) {
-
-               
-        }
+  }
+  .Notification {
+    @media only screen and (max-width: 768px) {
+      display: none !important;
     }
+  }
+  .Menu {
+    @media only screen and (max-width: 768px) {
+      display: block !important;
+    }
+  }
+  .Profile {
+    @media only screen and (max-width: 768px) {
+      display: none !important;
+    }
+    float: right;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+    }
+    .infoUser {
+      padding-left: 10px;
+
+      .nameUser {
+        color: white;
+      }
+    }
+  }
+  span.search {
+    position: relative;
+
+    .iconSearch {
+      left: 4px;
+      position: absolute;
+      top: 2px;
+      font-size: 16px;
+    }
+  }
+
+  input[type="text"] {
+    border-radius: 5px;
+    height: 34px;
+    @include borderRadiusAndSolid(1px solid black, 2px);
+    width: 300px;
+    padding-left: 22px;
+  }
+  ul {
+    li:nth-child(2) {
+    }
+  }
 }
-
-

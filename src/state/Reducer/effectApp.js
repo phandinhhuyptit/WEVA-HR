@@ -3,8 +3,9 @@ import * as effectContant from '../Contant/effectContant';
 
 const initialState = {
 
-    backGroundBodyAndFormOffer: false
-
+    backGroundBodyAndFormOffer: false,
+    listOfferAndInfoOffer : false
+    
 }
 const effectReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -14,8 +15,18 @@ const effectReducer = (state = initialState, action) => {
                 ...state,
                 backGroundBodyAndFormOffer: !state.backGroundBodyAndFormOffer
             }
+        case effectContant.openInfoOffer :
+         return {
+            ...state,
+            listOfferAndInfoOffer :true
+         }
+        case effectContant.closeInfoOffer :
+            return {
+                ...state,
+                listOfferAndInfoOffer : false
+            }          
         default:
-            return state
+            return state;
     }
 }
 export default effectReducer;
