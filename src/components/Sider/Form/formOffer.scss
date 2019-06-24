@@ -7,7 +7,46 @@
     border-radius: 2px;
     z-index: 2;
     text-replace: scale(0);
+    @media only screen and (max-width : 575px) {
+        width: 350px; 
+    }
     visibility: hidden;
+    .Form{
+
+        .nameOffer{
+
+            @media only screen and (max-width : 575px) {
+                margin-bottom: 0;
+            }
+        }
+        .Reason{
+            @media only screen and (max-width : 575px) {
+                margin-bottom: 0;
+            }
+        }
+        .dayOff{
+            @media only screen and (max-width : 575px) {
+                margin-bottom: 0;
+            }  
+        }
+        .selectHandlePosition{
+            @media only screen and (max-width : 575px) {
+                margin-bottom: 0;
+            }
+        }
+        .typeDayOff{
+
+            @media only screen and (max-width : 575px) {
+                margin-bottom: 12px;
+            }
+        }
+        .buttonOffers{
+            @media only screen and (max-width : 575px) {
+                margin-bottom: 0;
+            }
+
+        }
+    }
     .inconFormOffer{
 
         position:absolute;

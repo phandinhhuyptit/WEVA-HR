@@ -17,12 +17,7 @@ export class InfoOffer extends Component {
             <div
                 className="infoOffer"
                 style={{
-                    width: "70%",
-                    height: "100%",
-                    display: "block",
-                    padding: "0px 15px 0px",
-                    position: 'relative',
-                    borderLeft: '0.5px solid #80808052'
+                   
                 }}
             >
                 <Icon type="down" style={{
@@ -68,7 +63,7 @@ export class InfoOffer extends Component {
 
                 <Divider />
                 <div
-                    class="button"
+                    className="button"
                     style={{
                         display: "flex",
                         justifyContent: "space-between",

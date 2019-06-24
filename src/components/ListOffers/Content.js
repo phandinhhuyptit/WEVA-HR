@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Layout } from 'antd';
+import {connect} from 'react-redux';
+
+
 import ListOffers from './ListOffers/ListOffers';
 import InfoOffers from './infoOffer/infoOffer';
-import {connect} from 'react-redux';
 
 const { Content } = Layout;
 class content extends Component {

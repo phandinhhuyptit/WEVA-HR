@@ -8,7 +8,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
-const layoutPage = ({ children }) => (
+import { Layout  } from 'antd';
+
+
+import Header from './Header/Header';
+import BackGround from './Background';
+
+const layoutPage = ({ children}) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -19,19 +25,22 @@ const layoutPage = ({ children }) => (
         }
       }
     `}
-    render={data => (
+    
+    render={data => (   
       <>
-        <div
-        >
-          <main>{children}</main>
-        </div>
+        <Layout>
+          <BackGround />
+          <Header />
+            <main>{children}</main>
+        </Layout>          
       </>
     )}
   />
 )
-
 layoutPage.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
+
 export default layoutPage;
+

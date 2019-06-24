@@ -1,10 +1,6 @@
 import * as appContant from '../Contant/appContant';
-
-
 const initialState = {
-
     toggleCollapsedOfSider: true,
-
 }
 const appReducer = (state = initialState, action) => {
     switch (action.type) {

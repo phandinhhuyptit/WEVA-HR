@@ -47,30 +47,31 @@ export class offerForm extends Component {
     }
     static propTypes = {
     }
-    changeStateOfBackGroundAndFormOffer = () => {
-        this.props.onTurnOnOrOffForFormOfferAndBackgroundBody();
-    }
-    checkEsc = (e) => {
+    handleChangeStateForm = () => {
+          // Turn On Or Turn Off BackGround And Form Offer     
 
-        console.log("OK");
-
+        this.props.onChangeStateForm();
     }
+    // checkEsc = (e) => {
+
+    //     console.log("OK");
+
+    // }
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
 
             <div className="formOffer">
-                <Icon type="close" className="inconFormOffer" onClick={() => this.changeStateOfBackGroundAndFormOffer()} />
+                <Icon type="close" className="inconFormOffer" onClick={() => this.handleChangeStateForm()} />
                 <h3
                     style={{
-
                         backgroundColor: 'rgb(234, 234, 234)',
                         margin: '0',
                         padding: '8px',
                         fontSize: '14px',
                     }}
                 > TẠO ĐỀ XUẤT MỚI</h3>
-                <Form
+                <Form className="Form"
                     style={{
                         padding: '0px 10px 0px',
                         backgroundColor: 'white',
@@ -80,7 +81,7 @@ export class offerForm extends Component {
                     {...formItemLayout}
                     onSubmit={this.handleSubmit}
                 >                        
-                    <Form.Item style={{ width: '100%', fontWeight: '600' }} label='Tên Đề Xuất' hasFeedback>
+                    <Form.Item className="nameOffer" style={{ width: '100%', fontWeight: '600' }} label='Tên Đề Xuất' hasFeedback>
                         {getFieldDecorator('nameOffer', {
                             rules: [
                                 {
@@ -90,7 +91,7 @@ export class offerForm extends Component {
                             ],
                         })(<Input type='text' placeholder="Tên Đề Xuất" />)}
                     </Form.Item>
-                    <Form.Item style={{ width: '100%', fontWeight: '600' }} label="Lí Do" hasFeedback>
+                    <Form.Item className="Reason"  style={{ width: '100%', fontWeight: '600' }} label="Lí Do" hasFeedback>
                         {getFieldDecorator('reason', {
                             rules: [
                                 {
@@ -100,12 +101,12 @@ export class offerForm extends Component {
                             ],
                         })(<TextArea rows={4} placeholder="Lý Do Nghỉ" />)}
                     </Form.Item>
-                    <Form.Item label="Ngày Nghỉ" style={{ fontWeight: '600' }}
+                    <Form.Item className="dayOff" label="Ngày Nghỉ" style={{ fontWeight: '600' }}
                         hasFeedback
                     >
                         {getFieldDecorator('dayOff', rangeConfig)(<RangePicker />)}
                     </Form.Item>
-                    <Form.Item label="Người Xử Lý" hasFeedback
+                    <Form.Item className="selectHandlePosition"   label="Người Xử Lý" hasFeedback
 
                         style={{ width: '100%', fontWeight: '600' }}
                     >
@@ -120,7 +121,7 @@ export class offerForm extends Component {
                             </Select>
                         )}
                     </Form.Item>
-                    <Form.Item label="Nghỉ Phép" hasFeedback
+                    <Form.Item className="typeDayOff"  label="Nghỉ Phép" hasFeedback
 
                         style={{ width: '100%', fontWeight: '600' }}
                     >
@@ -133,7 +134,7 @@ export class offerForm extends Component {
                             </Select>
                         )}
                     </Form.Item>
-                    <Form.Item
+                    <Form.Item className="buttonOffers"
                         wrapperCol={{
                             xs: { span: 24 },
                             sm: { span: 24 },
@@ -141,7 +142,7 @@ export class offerForm extends Component {
                     >
                         <Row>
                             <Col xs={{ span: 24 }} sm={{ span: 11, offset: 1 }}  >
-                                <Button style={{ width: '100%' }} type="default" onClick={() => this.changeStateOfBackGroundAndFormOffer()} >
+                                <Button style={{ width: '100%' }} type="default" onClick={() => this.handleChangeStateForm()} >
                                     Huỷ Bỏ
                                 </Button>
                             </Col>
@@ -163,17 +164,17 @@ export class offerForm extends Component {
     }
 }
 const WrappedOfferForm = Form.create({ name: 'Offer' })(offerForm);
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        onTurnOnOrOffForFormOfferAndBackgroundBody: () => {
-            dispatch(effectAction.turnOnOrOffForFormOfferAndBackgroundBody())
+        onChangeStateForm: () => {
+            dispatch(effectAction.changeStateForm())
         }
 
     }
 }
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
-        stateOfBackgroundAndFormOffer: state.effect.backGroundBodyAndFormOffer
+        stateFormOffer: state.effect.stateFormOffer
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(WrappedOfferForm)

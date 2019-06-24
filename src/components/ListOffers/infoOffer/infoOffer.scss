@@ -1,8 +1,18 @@
 
-
-
-
 .infoOffer {
+
+  width: 70%;
+  height: auto;
+  display: block;
+  padding: 0px 15px 0px;
+  position: relative;
+  border-left: 0.5px solid #80808052;
+
+  @media only screen and (max-width: 992px) {
+   width : 100%!important;
+   font-size: 12px;
+
+  }
   .button {
     .Accept {
       &:hover {
@@ -10,15 +20,25 @@
         background-color:rgb(110, 162, 0)!important;
         border-color: #1e7e34!important;
       }
+
+      @media only screen and (max-width: 768px) {
+        width : 100px!important;
+        font-size: 12px;
+     
+       }
+
     }
     .Forward {
-
         &:hover {
             color: #fff!important;
             background-color: #218838!important;
             border-color: #1e7e34!important;
           }
-
+          @media only screen and (max-width: 768px) {
+            width : 100px!important;
+            font-size: 12px;
+         
+           }
     }
     .Deny {
 
@@ -27,6 +47,11 @@
             background-color: #c82333!important;
             border-color: #bd2130!important;
         }
+        @media only screen and (max-width: 768px) {
+          width : 100px!important;
+          font-size: 12px;
+       
+         }
 
     }
  

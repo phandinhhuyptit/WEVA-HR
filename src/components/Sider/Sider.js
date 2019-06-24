@@ -13,12 +13,12 @@ const { Sider } = Layout;
 class sider extends Component {
     static propTypes = {
         toggleCollapsed: PropTypes.bool.isRequired,
-        onTurnOnOrOffForFormOfferAndBackgroundBody: PropTypes.func.isRequired,
+        onChangeStateForm: PropTypes.func.isRequired,
         stateOfBackgroundAndFormOffer: PropTypes.bool.isRequired,
         onDefaultSider: PropTypes.func
     }
-    changeStateOfBackGroundAndFormOffer = () => {
-        this.props.onTurnOnOrOffForFormOfferAndBackgroundBody();
+    handleChangeStateForm = () => {
+        this.props.onChangeStateForm();
     }
     componentDidMount = () => {
         setInterval(() => {
@@ -33,8 +33,7 @@ class sider extends Component {
     render() {
         const { toggleCollapsed, stateOfBackgroundAndFormOffer } = this.props
         return (
-            <Sider className="Sider" style={{ height: '800px' }} width={200} style={{ background: "#fff" }} collapsed={!this.props.toggleCollapsed}>
-
+            <Sider className="Sider"  width={200} style={{ background: "#fff",height : "100vh" }} collapsed={!this.props.toggleCollapsed}>
                 {
                     <CSSTransition
                         classNames="fade"
@@ -46,7 +45,6 @@ class sider extends Component {
                         <FormOffer />
                     </CSSTransition>
                 }
-
                 <Menu className='Menu' mode="inline"
                     defaultSelectedKeys={['1']}
                     style={{
@@ -62,7 +60,6 @@ class sider extends Component {
                                 <span className="Profile" style={{
                                     paddingLeft: '15px',
                                     alignItems: 'flex-end',
-                                    paddingLeft: '15px',
                                     display: 'flex',
                                     justifyContent: 'space-evenly'
                                 }}>
@@ -74,7 +71,6 @@ class sider extends Component {
                                 </span>
                                 : ''
                         }
-
                     </MediaQuery>
                     {
                         toggleCollapsed ?
@@ -83,7 +79,7 @@ class sider extends Component {
                                     color: '#fff',
                                     backgroundColor: '#5cb85c',
                                     borderColor: '#4cae4c'
-                                }} icon="plus" onClick={() => this.changeStateOfBackGroundAndFormOffer()} >
+                                }} icon="plus" onClick={() => this.handleChangeStateForm()} >
                                     Tạo Đề Xuất Mới
                                     </Button>
                             </Menu.Item>
@@ -157,10 +153,8 @@ class sider extends Component {
                         <Menu.Item className="Search" style={{ display: 'none' }}>
                             <Input placeholder="Tìm Nhanh Yêu Cầu - Đề Xuất" prefix={<Icon type="search"
                                 style={{
-
                                     color: 'rgba(0,0,0,.25)'
                                 }} />}
-
                             />
                         </Menu.Item>
                         : ''}
@@ -172,13 +166,13 @@ class sider extends Component {
 const mapStateToProps = (state) => {
     return {
         toggleCollapsed: state.app.toggleCollapsedOfSider,
-        stateOfBackgroundAndFormOffer: state.effect.backGroundBodyAndFormOffer
+        stateOfBackgroundAndFormOffer: state.effect.stateFormOffer
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        onTurnOnOrOffForFormOfferAndBackgroundBody: () => {
-            dispatch(effectAction.turnOnOrOffForFormOfferAndBackgroundBody())
+        onChangeStateForm: () => {
+            dispatch(effectAction.changeStateForm())
         },
         onDefaultSider: () => {
             dispatch(appAction.defaultSider())

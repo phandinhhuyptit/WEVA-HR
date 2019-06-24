@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { List, Checkbox} from 'antd';
+
 import './ListOffers.scss';
-import { List, Checkbox } from 'antd';
 import * as effectAction from '../../../state/Action/effectAction';
 
 const listData = [];
@@ -21,11 +22,8 @@ export class ListOffers extends Component {
     }
     constructor(props) {
         super(props)
-
         this.state = {
-
             indexCurrentOfListOffer: null
-
         }
     }
     openInfoOffer = (e) => {
@@ -49,7 +47,6 @@ export class ListOffers extends Component {
                         marginTop: '8px',
                         paddingLeft : '8px'
                     }}
-
                 > Danh Sách Đề Xuất</h2>
                 <List
                     itemLayout=""
@@ -59,7 +56,7 @@ export class ListOffers extends Component {
                     }}
                     dataSource={listData}
                     renderItem={item => (
-                        <List.Item class={`${parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeHighLight' : 'ant-list-item'}`}
+                        <List.Item className={`${parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeHighLight' : 'ant-list-item'}`}
                             style={{
                                 padding: '8px 8px 8px'
                             }}
@@ -73,7 +70,7 @@ export class ListOffers extends Component {
                                 width: '100%'
 
                             }} onClick={(e) => this.openInfoOffer(e)} data-tag={item.key} >
-                                <span class={parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeFont' : ''}
+                                <span className={parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeFont' : ''}
                                     style={{
                                         float: 'right',
                                         font: '16px'
@@ -81,7 +78,7 @@ export class ListOffers extends Component {
                                     Feb 26
 
                                 </span>
-                                <span class={parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeFont' : ''}
+                                <span className={parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeFont' : ''}
                                     style={{
                                         fontSize: '14px',
                                         color: 'black',
@@ -112,7 +109,6 @@ export class ListOffers extends Component {
     }
 }
 const mapStateToProps = state => {
-
     return {
         listOfferAndInfoOffer: state.effect.listOfferAndInfoOffer
     }

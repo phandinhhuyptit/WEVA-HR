@@ -1,17 +1,16 @@
-import * as effectAction from '../Contant/effectContant';
+import * as effectContant from '../Contant/effectContant';
 
 
-export const turnOnOrOffForFormOfferAndBackgroundBody = () =>{      
+export const changeStateForm = () =>{
+        // Turn On Or Turn Off BackGround And Form Offer     
         return {
 
-            type :   effectAction.turnOnOrOffBackgroundBodyAndFormOffer
+            type : effectContant.changeStateFormOffer
         }
 }
 export const openInfoOffer =() =>{
-
         return {
-
-            type: effectAction.openInfoOffer
+            type: effectContant.openInfoOffer
         }
 }
 export const closeInfoOffer = () =>{
@@ -19,7 +18,17 @@ export const closeInfoOffer = () =>{
         return {
 
 
-            type : effectAction.closeInfoOffer
+            type : effectContant.closeInfoOffer
         }
+}
+export const changeStateNotification =() =>{
+
+              // Handle Open And Close  Of Notification  
+        return {
+
+            type : effectContant.changeNotification
+
+        }
+
 }
 
