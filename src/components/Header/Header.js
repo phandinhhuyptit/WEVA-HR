@@ -17,9 +17,6 @@ import {
     Col,
     Button
 } from 'antd';
-
-
-
 import * as appAction from '../../state/Action/appAction';
 import * as effectAction from '../../state/Action/effectAction';
 import { CSSTransition } from 'react-transition-group';
@@ -145,7 +142,7 @@ class header extends Component {
 
     render() {
         const { initLoading, Data, endArray } = this.state;
-        const { stateNotification } = this.props;
+        const { stateNotification,toggleCollapsed } = this.props;
         return (
             <Header className="header">
                 {/* <Icon className="trigger" type={this.props.toggleCollapsed ? 'menu-unfold' : 'menu-fold'}
@@ -154,19 +151,13 @@ class header extends Component {
                     theme="dark"
                     style={{ lineHeight: '58px', backgroundColor: '#084D17' }}
                 >
-                    <Menu.Item className="Menu" style={{
-                        backgroundColor: 'transparent',
-                        display: 'none',
-                        position: 'relative',
-                        top: '10px',
-                        verticalAlign: 'bottom',
-                    }}
+                    <Menu.Item className="menu" 
                         key="Menu1"
                     >
-                        <Icon className="trigger" type={this.props.toggleCollapsed ? 'menu-unfold' : 'menu-fold'}
+                        <Icon className="trigger" type={toggleCollapsed ? 'menu-unfold' : 'menu-fold'}
                             onClick={this.toggleCollapsed} style={{ fontSize: '25px', color: 'white', marginRight: '20px' }} />
                     </Menu.Item>
-                    <Menu.Item className="Logo" style={{
+                    <Menu.Item className="logo" style={{
                         backgroundColor: 'transparent',
                         position: 'relative',
                         top: '1px',
@@ -179,12 +170,8 @@ class header extends Component {
                             LOGO
                         </span>
                     </Menu.Item>
-                    <Menu.Item className="Search" style={{
-                        backgroundColor: 'transparent',
-                        position: 'relative',
-                        top: '1px',
-                        display: 'inline-block',
-                        verticalAlign: 'bottom'
+                    <Menu.Item className="search" style={{
+                        
                     }}
                         key="Menu3"
                     >
@@ -193,42 +180,26 @@ class header extends Component {
                             style={{ width: '400px' }}
                         />
                     </Menu.Item>
-                    <Menu.Item className="Account" style={{
-                        float: 'right',
-                        backgroundColor: 'transparent',
-                        position: 'relative',
-                        top: '7px',
-                        width: '165px',
-                        display: 'inline-block',
-                        verticalAlign: 'bottom',
+                    <Menu.Item className="account" style={{
+                       
                     }}
                         key="Menu4"
                     >
-                        <Dropdown className="dropDownMenuAccount" overlay={menuAccount} trigger={['click']}>
-                            <span className="Profile">
+                        <Dropdown className="drop-down-menu-account" overlay={menuAccount} trigger={['click']}>
+                            <span className="profile">
                                 <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                                <span className="infoUser">
-                                    <span className="nameUser">Phan Đình Huy</span>
+                                <span className="info-user">
+                                    <span className="name-user">Phan Đình Huy</span>
                                 </span>
                             </span>
                         </Dropdown>
                     </Menu.Item>
-                    <Menu.Item className="Notification" style={{
-                        float: 'right',
-                        backgroundColor: 'transparent',
-                        padding: '0px',
-                        position: 'relative',
-                        overflow: 'visible',
-                        top: '8px',
-                        display: 'inline-block',
-                        verticalAlign: 'bottom',
-                        width: '50px',
-                        paddingLeft: '18px',
-                    }}
+                    <Menu.Item className="notification"
                         key="Menu5"
                     >
-                        <span onClick={() => this.onNotification()} style={{ paddingTop: '4px' }} >
-                            <Badge count={11} overflowCount={99} style={{
+                        <span className="icon-notification" onClick={() => this.onNotification()} style={{ paddingTop: '4px' }} >
+                            {/*   className not working inside tag <Badge/>       */}
+                            <Badge className="badge" count={11} overflowCount={99} style={{
                                 fontSize: '10px',
                                 width: '20px',
                                 height: '20px',
@@ -237,7 +208,7 @@ class header extends Component {
                                 justifyContent: 'center',
                                 zIndex: '0'
                             }}>
-                                <Icon type='bell' style={{ fontSize: '19px', color: 'white', marginRight: '0px' }} />
+                                <Icon className="bell" type='bell' style={{ fontSize: '19px', color: 'white', marginRight: '0px' }} />
                             </Badge>
                         </span>
                         <CSSTransition

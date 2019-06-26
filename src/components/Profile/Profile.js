@@ -54,16 +54,16 @@ export class Profile extends Component {
             <Content>
                 <Row style={{ width: '100%', margin: '25px 25px 0 25px' }}>
 
-                    <h2 style={{ marginBottom : '30px', fontSize : '23px', color : 'gray'}}> Hồ Sơ Của Tôi</h2>    
+                    <h2 style={{ marginBottom: '30px', fontSize: '23px', color: 'gray' }}> Hồ Sơ Của Tôi</h2>
 
                     <Col xs={24} sm={24} md={24} lg={8} xl={8} span={8}>
-                        <UploadAvatar/>
+                        <UploadAvatar />
                     </Col>
                     <Col xs={24} sm={24} md={24} lg={16} xl={16} span={16}>
-                        <Tabs  className="tabUser" type="card">
-                            <TabPane  className="infoAccount" tab="Thông Tin Tài Khoản" key="1">
-                                <Form className="formUser" {...formItemLayout} onSubmit={this.handleSubmit} >
-                                    <Form.Item className="Name" label="Họ Tên">
+                        <Tabs className="tab-user" type="card">
+                            <TabPane className="info-account" tab="Thông Tin Tài Khoản" key="1">
+                                <Form className="form-user" {...formItemLayout} onSubmit={this.handleSubmit} >
+                                    <Form.Item className="name" label="Họ Tên">
                                         {getFieldDecorator('Name', {
                                             rules: [
                                                 {
@@ -73,7 +73,7 @@ export class Profile extends Component {
                                             ],
                                         })(<Input placeholder="Họ Tên" />)}
                                     </Form.Item>
-                                    <Form.Item className="Phone" label="Số Điện Thoại">
+                                    <Form.Item className="phone" label="Số Điện Thoại">
                                         {getFieldDecorator('Phone', {
                                             rules: [{ required: true, message: 'Please input your phone number!' }],
                                         })(<Search style={{
@@ -86,12 +86,12 @@ export class Profile extends Component {
 
                                         />)}
                                     </Form.Item>
-                                    <Form.Item className="Code" label="Mã Xác Thực">
+                                    <Form.Item className="code" label="Mã Xác Thực">
                                         {getFieldDecorator('Code', {
                                             rules: [{ required: true, message: 'Please input your code!' }],
                                         })(<Input type="number" placeholder="Nhập Mã Xác Thực" />)}
                                     </Form.Item>
-                                    <Form.Item className="Email" label="Email">
+                                    <Form.Item className="email" label="Email">
                                         {getFieldDecorator('Email', {
                                             rules: [
 
@@ -114,10 +114,10 @@ export class Profile extends Component {
                                     </Form.Item>
                                 </Form>
                             </TabPane>
-                            <TabPane style={{ color : 'rgb(92, 184, 92)!important'}}   className="changePassword" tab=" Thay Đổi Mật Khẩu " key="2">
-                                <Form className="formChangePassword" {...formItemLayout} onSubmit={this.handleSubmit}>
+                            <TabPane style={{ color: 'rgb(92, 184, 92)!important' }} className="change-password" tab=" Thay Đổi Mật Khẩu " key="2">
+                                <Form className="form-change-password" {...formItemLayout} onSubmit={this.handleSubmit}>
 
-                                    <Form.Item label="Mật Khẩu Cũ" hasFeedback>
+                                    <Form.Item className="old-password" label="Mật Khẩu Cũ" hasFeedback>
                                         {getFieldDecorator('oldPassword', {
                                             rules: [
                                                 {
@@ -125,10 +125,10 @@ export class Profile extends Component {
                                                     message: 'Please input your password!',
                                                 }
                                             ]
-                                        })(<Input.Password />)}
+                                        })(<Input.Password className="input-old-password" />)}
                                     </Form.Item>
 
-                                    <Form.Item label="Mật Khẩu Mới" hasFeedback>
+                                    <Form.Item className="new-password" label="Mật Khẩu Mới" hasFeedback>
                                         {getFieldDecorator('newPassword', {
                                             rules: [
                                                 {
@@ -136,9 +136,9 @@ export class Profile extends Component {
                                                     message: 'Please input your password!',
                                                 }
                                             ]
-                                        })(<Input.Password />)}
+                                        })(<Input.Password className="input-new-password" />)}
                                     </Form.Item>
-                                    <Form.Item label="Xác Nhận Mật Khẩu" hasFeedback>
+                                    <Form.Item className="confirm-password" label="Xác Nhận Mật Khẩu" hasFeedback>
                                         {getFieldDecorator('confirmPassword', {
                                             rules: [
                                                 {
@@ -149,7 +149,7 @@ export class Profile extends Component {
                                                     validator: this.compareToFirstPassword,
                                                 },
                                             ]
-                                        })(<Input.Password onBlur={this.handleConfirmBlur} />)}
+                                        })(<Input.Password className="input-confirm-password" onBlur={this.handleConfirmBlur} />)}
                                     </Form.Item>
                                     <Form.Item {...tailFormItemLayout}>
                                         <Button type="primary" htmlType="submit">

@@ -1,59 +1,76 @@
-.formOffer{
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    width: 500px;
-    height: auto;
-    border-radius: 2px;
-    z-index: 2;
-    text-replace: scale(0);
-    @media only screen and (max-width : 575px) {
-        width: 350px; 
+.form-offer {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 500px;
+  height: auto;
+  border-radius: 2px;
+  z-index: 2;
+  text-replace: scale(0);
+  @media only screen and (max-width: 575px) {
+    width: 350px;
+  }
+  visibility: hidden;
+  .form {
+    padding: 0px 10px 0px;
+    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    .name-offer {
+      width: 100%;
+      font-weight: 600;
+      @media only screen and (max-width: 575px) {
+        margin-bottom: 0;
+      }
     }
-    visibility: hidden;
-    .Form{
-
-        .nameOffer{
-
-            @media only screen and (max-width : 575px) {
-                margin-bottom: 0;
-            }
-        }
-        .Reason{
-            @media only screen and (max-width : 575px) {
-                margin-bottom: 0;
-            }
-        }
-        .dayOff{
-            @media only screen and (max-width : 575px) {
-                margin-bottom: 0;
-            }  
-        }
-        .selectHandlePosition{
-            @media only screen and (max-width : 575px) {
-                margin-bottom: 0;
-            }
-        }
-        .typeDayOff{
-
-            @media only screen and (max-width : 575px) {
-                margin-bottom: 12px;
-            }
-        }
-        .buttonOffers{
-            @media only screen and (max-width : 575px) {
-                margin-bottom: 0;
-            }
-
-        }
+    .reason {
+      width: 100%;
+      font-weight: 600;
+      @media only screen and (max-width: 575px) {
+        margin-bottom: 0;
+      }
     }
-    .inconFormOffer{
-
-        position:absolute;
-        left: 96%;
-        top: 2%;
-        font-size: 13px;
-        cursor: pointer;
+    .day-off {
+      font-weight: 600;
+      @media only screen and (max-width: 575px) {
+        margin-bottom: 0;
+      }
     }
-
+    .select-position {
+      width: 100%;
+      font-weight: 600;
+      @media only screen and (max-width: 575px) {
+        margin-bottom: 0;
+      }
+    }
+    .type-day-off {
+      @media only screen and (max-width: 575px) {
+        margin-bottom: 12px;
+      }
+    }
+    .button-offer {
+      @media only screen and (max-width: 575px) {
+        margin-bottom: 0;
+      }
+      .sent-offers {
+        width: 100%;
+        color: #fff;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+      }
+    }
+  }
+  .icon-form-offer {
+    position: absolute;
+    left: 96%;
+    top: 2%;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .title-offer {
+    background-color: rgb(234, 234, 234);
+    margin: 0;
+    padding: 8px;
+    font-size: 14px;
+  }
 }

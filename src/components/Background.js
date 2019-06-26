@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import './Background.scss';
 import * as effectAction from '../state/Action/effectAction';
 
- class Background extends Component {
+class Background extends Component {
     static propTypes = {
-        onChangeStateForm : PropTypes.func.isRequired
+        onChangeStateForm: PropTypes.func.isRequired
 
     }
     handleChangeStateForm = () => {
@@ -18,7 +18,7 @@ import * as effectAction from '../state/Action/effectAction';
     }
 
     render() {
-        const {  stateFormOffer } = this.props;
+        const { stateFormOffer } = this.props;
         return (
             <CSSTransition
                 classNames="BackGround"
@@ -26,20 +26,8 @@ import * as effectAction from '../state/Action/effectAction';
                 timeout={500}
                 enter={true}
                 exit={true}
-            // onEnter={() => console.log("On Enter")}
-            // onEntering={() => console.log("On Entering")}
-            // onEntered={() => console.log("On Entered")}
-            // onExit={() => console.log("On Exit")}
-            // onExiting={() => console.log("On Exiting")}
-            // onExited={() => console.log(" On Exited")}
             >
-                <div className="backgroundBody" style={{
-                    width: '100%',
-                    height: '100%',
-                    position: 'fixed',
-                    backgroundColor: 'rgba(74, 71, 71, 0.52)',
-                    zIndex: '1',
-                }} onClick={() => this.handleChangeStateForm()} />
+                <div className="background" onClick={() => this.handleChangeStateForm()} />
 
             </CSSTransition>
         )

@@ -1,6 +1,4 @@
-
-.infoOffer {
-
+.info-offer {
   width: 70%;
   height: auto;
   display: block;
@@ -9,58 +7,74 @@
   border-left: 0.5px solid #80808052;
 
   @media only screen and (max-width: 992px) {
-   width : 100%!important;
-   font-size: 12px;
-
+    width: 100% !important;
+    font-size: 12px;
   }
-  .button {
-    .Accept {
+
+  .icon-close {
+    position: absolute;
+    left: 96%;
+    top: 1%;
+    cursor: pointer;
+    font-size: 14px;
+    color: gray;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    .accept {
+      background-color: rgb(134, 197, 3);
+      width: 200px;
+      border-color: rgb(76, 174, 76);
+      color: rgb(255, 255, 255);
       &:hover {
-        color: #fff!important;
-        background-color:rgb(110, 162, 0)!important;
-        border-color: #1e7e34!important;
+        color: #fff !important;
+        background-color: rgb(110, 162, 0) !important;
+        border-color: #1e7e34 !important;
       }
 
       @media only screen and (max-width: 768px) {
-        width : 100px!important;
+        width: 100px !important;
         font-size: 12px;
-     
-       }
-
+      }
     }
-    .Forward {
-        &:hover {
-            color: #fff!important;
-            background-color: #218838!important;
-            border-color: #1e7e34!important;
-          }
-          @media only screen and (max-width: 768px) {
-            width : 100px!important;
-            font-size: 12px;
-         
-           }
+    .forward {
+      background-color: rgb(92, 184, 92);
+      color: rgb(255, 255, 255);
+      width: 200px;
+      border-color: #28a745;
+      &:hover {
+        color: #fff !important;
+        background-color: #218838 !important;
+        border-color: #1e7e34 !important;
+      }
+      @media only screen and (max-width: 768px) {
+        width: 100px !important;
+        font-size: 12px;
+      }
     }
-    .Deny {
-
-        &:hover {
-            color: #fff!important;
-            background-color: #c82333!important;
-            border-color: #bd2130!important;
-        }
-        @media only screen and (max-width: 768px) {
-          width : 100px!important;
-          font-size: 12px;
-       
-         }
-
+    .deny {
+      background-color: #dc3545;
+      border-color: #dc3545;
+      color: #fff;
+      width: 200px;
+      &:hover {
+        color: #fff !important;
+        background-color: #c82333 !important;
+        border-color: #bd2130 !important;
+      }
+      @media only screen and (max-width: 768px) {
+        width: 100px !important;
+        font-size: 12px;
+      }
     }
- 
   }
-  .inputMsg{
-    input[type='text']{
-      border: none!important;
-      box-shadow: none!important;  
-    } 
-}
-
+  .inputMsg {
+    input[type="text"] {
+      border: none !important;
+      box-shadow: none !important;
+    }
+  }
 }
