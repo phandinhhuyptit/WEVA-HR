@@ -1,11 +1,67 @@
- .tabUser {
-    .infoAccount{
-        .formUser{
-
-
-
-
-
-            }
+.tabUser {
+  .infoAccount {
+    .formUser {
+      .Name {
+        .ant-col.ant-form-item-label {
+          display: flex;
         }
- }
+        input[type="text"] {
+
+            font-size: 12px;
+
+        } 
+      }
+      .Phone {
+        .ant-col.ant-form-item-label {
+          display: flex;
+        }
+        .ant-input-group-addon {
+
+            font-size: 12px;
+            button {
+                font-size: 12px;
+                background-color: rgb(92, 184, 92);
+                border-color: rgb(76, 174, 76);
+            }
+
+        } 
+        input[type="number"] {
+          -moz-appearance: textfield;
+          font-size: 12px;
+          
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+      }
+      .Code {
+        input[type="number"] {
+
+            font-size: 12px;
+            
+        } 
+        .ant-col.ant-form-item-label {
+          display: flex;
+        }
+        input[type="number"] {
+          -moz-appearance: textfield;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+      }
+      .Email {
+        input[type="text"] {
+
+            font-size: 12px;
+            
+        } 
+        .ant-col.ant-form-item-label {
+          display: flex;
+        }
+      }
+    }
+  }
+}

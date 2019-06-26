@@ -31,6 +31,7 @@ class content extends Component {
         )
     }
 }
+
 const mapStateToProps = state => {
    
     return {

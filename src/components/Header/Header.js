@@ -38,6 +38,7 @@ const menu = (
         <Menu.Item key="3">3rd menu item</Menu.Item>
     </Menu>
 );
+
 const menuAccount = (
     <Menu className="menuAccount">
         <div className="titleAccount">
@@ -80,6 +81,7 @@ class header extends Component {
         Data: [listData[0], listData[1], listData[2], listData[3], listData[4], listData[5]],
         indexOfArray: 5,
         endArray: false
+
     }
     onLoadMore = () => {
         const { indexOfArray, Data } = this.state;
@@ -142,7 +144,7 @@ class header extends Component {
     }
 
     render() {
-        const {initLoading, Data, endArray } = this.state;
+        const { initLoading, Data, endArray } = this.state;
         const { stateNotification } = this.props;
         return (
             <Header className="header">
@@ -159,7 +161,7 @@ class header extends Component {
                         top: '10px',
                         verticalAlign: 'bottom',
                     }}
-                    key="Menu1"
+                        key="Menu1"
                     >
                         <Icon className="trigger" type={this.props.toggleCollapsed ? 'menu-unfold' : 'menu-fold'}
                             onClick={this.toggleCollapsed} style={{ fontSize: '25px', color: 'white', marginRight: '20px' }} />
@@ -171,7 +173,7 @@ class header extends Component {
                         display: 'inline-block',
                         verticalAlign: 'bottom',
                     }}
-                    key="Menu2"
+                        key="Menu2"
                     >
                         <span className="Logo">
                             LOGO
@@ -184,7 +186,7 @@ class header extends Component {
                         display: 'inline-block',
                         verticalAlign: 'bottom'
                     }}
-                    key="Menu3"
+                        key="Menu3"
                     >
                         <Input placeholder="Tìm Nhanh Yêu Cầu - Đề Xuất" prefix={<Icon type="search"
                             style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -200,7 +202,7 @@ class header extends Component {
                         display: 'inline-block',
                         verticalAlign: 'bottom',
                     }}
-                    key="Menu4"
+                        key="Menu4"
                     >
                         <Dropdown className="dropDownMenuAccount" overlay={menuAccount} trigger={['click']}>
                             <span className="Profile">
@@ -223,7 +225,7 @@ class header extends Component {
                         width: '50px',
                         paddingLeft: '18px',
                     }}
-                    key="Menu5"
+                        key="Menu5"
                     >
                         <span onClick={() => this.onNotification()} style={{ paddingTop: '4px' }} >
                             <Badge count={11} overflowCount={99} style={{
@@ -240,11 +242,12 @@ class header extends Component {
                         </span>
                         <CSSTransition
                             classNames="fadeNotification"
-                            in={stateNotification}
-                            timeout={500}
+                            in ={stateNotification}
+                            appear={true}
                             enter={true}
+                            timeout={500}
                         >
-                            <Notification endArray={endArray} Data={Data} initLoading={initLoading} onLoadMore={this.onLoadMore} />
+                           {  stateNotification ? <Notification endArray={endArray} Data={Data} initLoading={initLoading} onLoadMore={this.onLoadMore} />  : <div></div>}   
                         </CSSTransition>
                     </Menu.Item>
                 </Menu>
