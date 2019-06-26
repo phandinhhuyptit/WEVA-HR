@@ -4,10 +4,7 @@ import { Layout, Spin } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
-
-import './styles/Dasboard.scss';
 import 'antd/dist/antd.css';
-
 import LayoutPage from "../components/layout";
 import Sider from "../components/Sider/Sider";
 import SEO from "../components/seo";
@@ -31,18 +28,9 @@ class IndexPage extends Component {
       Loading: true
     }
   }
-  handleNotification = () => {
-    const { onChangeStateNotification, stateNotification } = this.props;
-    if (stateNotification === true) onChangeStateNotification();
-
-  }
-  handleChangeStateForm = () => {
-    // Turn On Or Turn Off BackGround And Form Offer     
-    const { onChangeStateForm } = this.props;
-    onChangeStateForm();
-  }
+  
   componentDidMount = () => {
-    setTimeout(() => this.setState({ Loading: false }), 1000);
+   this.setState({ Loading: false })
   }
   render() {
 

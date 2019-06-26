@@ -46,9 +46,11 @@ export class offerForm extends Component {
         }
     }
     static propTypes = {
+        stateFormOffer: PropTypes.bool.isRequired,
+        onChangeStateForm: PropTypes.func
     }
     handleChangeStateForm = () => {
-          // Turn On Or Turn Off BackGround And Form Offer     
+        // Turn On Or Turn Off BackGround And Form Offer     
 
         this.props.onChangeStateForm();
     }
@@ -61,27 +63,16 @@ export class offerForm extends Component {
         const { getFieldDecorator } = this.props.form;
         return (
 
-            <div className="formOffer">
-                <Icon type="close" className="inconFormOffer" onClick={() => this.handleChangeStateForm()} />
-                <h3
-                    style={{
-                        backgroundColor: 'rgb(234, 234, 234)',
-                        margin: '0',
-                        padding: '8px',
-                        fontSize: '14px',
-                    }}
-                > TẠO ĐỀ XUẤT MỚI</h3>
-                <Form className="Form"
-                    style={{
-                        padding: '0px 10px 0px',
-                        backgroundColor: 'white',
-                        paddingTop: '15px',
-                        paddingBottom: '15px'
-                    }}
+            <div className="form-offer">
+                <Icon type="close" className="icon-form-offer" onClick={() => this.handleChangeStateForm()} />
+                <h3 className="title-offer">
+                    TẠO ĐỀ XUẤT MỚI
+                </h3>
+                <Form className="form"
                     {...formItemLayout}
                     onSubmit={this.handleSubmit}
-                >                        
-                    <Form.Item className="nameOffer" style={{ width: '100%', fontWeight: '600' }} label='Tên Đề Xuất' hasFeedback>
+                >
+                    <Form.Item className="name-offer" label='Tên Đề Xuất' hasFeedback>
                         {getFieldDecorator('nameOffer', {
                             rules: [
                                 {
@@ -91,7 +82,7 @@ export class offerForm extends Component {
                             ],
                         })(<Input type='text' placeholder="Tên Đề Xuất" />)}
                     </Form.Item>
-                    <Form.Item className="Reason"  style={{ width: '100%', fontWeight: '600' }} label="Lí Do" hasFeedback>
+                    <Form.Item className="reason" label="Lí Do" hasFeedback>
                         {getFieldDecorator('reason', {
                             rules: [
                                 {
@@ -101,14 +92,12 @@ export class offerForm extends Component {
                             ],
                         })(<TextArea rows={4} placeholder="Lý Do Nghỉ" />)}
                     </Form.Item>
-                    <Form.Item className="dayOff" label="Ngày Nghỉ" style={{ fontWeight: '600' }}
+                    <Form.Item className="day-off" label="Ngày Nghỉ"
                         hasFeedback
                     >
                         {getFieldDecorator('dayOff', rangeConfig)(<RangePicker />)}
                     </Form.Item>
-                    <Form.Item className="selectHandlePosition"   label="Người Xử Lý" hasFeedback
-
-                        style={{ width: '100%', fontWeight: '600' }}
+                    <Form.Item className="select-position" label="Người Xử Lý" hasFeedback
                     >
                         {getFieldDecorator('selectHandlePosition', {
                             rules: [{ required: true, message: 'Please select your country!' }],
@@ -121,9 +110,7 @@ export class offerForm extends Component {
                             </Select>
                         )}
                     </Form.Item>
-                    <Form.Item className="typeDayOff"  label="Nghỉ Phép" hasFeedback
-
-                        style={{ width: '100%', fontWeight: '600' }}
+                    <Form.Item className="type-day-off" label="Nghỉ Phép" hasFeedback
                     >
                         {getFieldDecorator('typeOfDayOff', {
                             rules: [{ required: true, message: 'Please select your country!' }],
@@ -134,7 +121,7 @@ export class offerForm extends Component {
                             </Select>
                         )}
                     </Form.Item>
-                    <Form.Item className="buttonOffers"
+                    <Form.Item className="button-offer"
                         wrapperCol={{
                             xs: { span: 24 },
                             sm: { span: 24 },
@@ -147,14 +134,9 @@ export class offerForm extends Component {
                                 </Button>
                             </Col>
                             <Col xs={{ span: 24 }} sm={{ span: 11, offset: 1 }} >
-                                <Button type='reset' style={{
-                                    width: '100%',
-                                    color: '#fff',
-                                    backgroundColor: '#5cb85c',
-                                    borderColor: '#4cae4c'
-                                }} type="primary" >
+                                <Button className="sent-offers" type='reset' type="primary" >
                                     Gửi Đề Xuất
-                            </Button>
+                                </Button>
                             </Col>
                         </Row>
                     </Form.Item>

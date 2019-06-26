@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { List, Checkbox} from 'antd';
-
+import { List, Checkbox } from 'antd';
 import './ListOffers.scss';
 import * as effectAction from '../../../state/Action/effectAction';
 
@@ -23,30 +22,27 @@ export class ListOffers extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            indexCurrentOfListOffer: null
+            indexCurrent: null
         }
     }
     openInfoOffer = (e) => {
-
+        const { isShowOffers } = this.props
         this.setState({
 
-            indexCurrentOfListOffer: e.currentTarget.attributes['data-tag'].value
+            indexCurrent: e.currentTarget.attributes['data-tag'].value
 
         })
-        if (!this.props.listOfferAndInfoOffer) {
+        if (!isShowOffers) {
 
             this.props.onOpenInfoOffer();
         }
     }
     render() {
+        const { indexCurrent } = this.state;
+        const { isShowOffers } = this.props;
         return (
-            <div className={`listOffers ${this.props.listOfferAndInfoOffer ? 'activeSmallList' : ''}`}   >
-                <h2
-                    style={{
-
-                        marginTop: '8px',
-                        paddingLeft : '8px'
-                    }}
+            <div className={`listOffers ${isShowOffers ? 'activeSmallList' : ''}`}   >
+                <h2 style={{ marginTop: '8px', paddingLeft: '8px' }}
                 > Danh Sách Đề Xuất</h2>
                 <List
                     itemLayout=""
@@ -56,7 +52,7 @@ export class ListOffers extends Component {
                     }}
                     dataSource={listData}
                     renderItem={item => (
-                        <List.Item className={`${parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeHighLight' : 'ant-list-item'}`}
+                        <List.Item className={`${parseInt(indexCurrent) === item.key ? 'activeHighLight' : 'ant-list-item'}`}
                             style={{
                                 padding: '8px 8px 8px'
                             }}
@@ -70,7 +66,7 @@ export class ListOffers extends Component {
                                 width: '100%'
 
                             }} onClick={(e) => this.openInfoOffer(e)} data-tag={item.key} >
-                                <span className={parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeFont' : ''}
+                                <span className={parseInt(indexCurrent) === item.key ? 'activeFont' : ''}
                                     style={{
                                         float: 'right',
                                         font: '16px'
@@ -78,7 +74,7 @@ export class ListOffers extends Component {
                                     Feb 26
 
                                 </span>
-                                <span className={parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeFont' : ''}
+                                <span className={parseInt(indexCurrent) === item.key ? 'activeFont' : ''}
                                     style={{
                                         fontSize: '14px',
                                         color: 'black',
@@ -86,8 +82,8 @@ export class ListOffers extends Component {
                                     {`${item.title} `}
 
                                 </span>
-                                <span className={`infoOffers ${this.props.listOfferAndInfoOffer ? 'activeChangeShapeOfInfoOffers' : ''} 
-                                     ${ parseInt(this.state.indexCurrentOfListOffer) === item.key ? 'activeFont' : ''} `}
+                                <span className={`infoOffers ${isShowOffers ? 'activeChangeShapeOfInfoOffers' : ''} 
+                                     ${ parseInt(indexCurrent) === item.key ? 'activeFont' : ''} `}
                                     style={{
                                         fontSize: '10px',
                                         fontWeight: '400',
@@ -110,7 +106,7 @@ export class ListOffers extends Component {
 }
 const mapStateToProps = state => {
     return {
-        listOfferAndInfoOffer: state.effect.listOfferAndInfoOffer
+        isShowOffers: state.effect.isShowOffers
     }
 }
 const mapDispatchToProps = dispatch => {

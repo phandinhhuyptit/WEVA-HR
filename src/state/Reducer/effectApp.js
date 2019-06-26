@@ -2,7 +2,7 @@ import * as effectContant from '../Contant/effectContant';
 const initialState = {
 
     stateFormOffer: false,
-    listOfferAndInfoOffer : false,
+    isShowOffers : false,
     Notification : false
 }
 const effectReducer = (state = initialState, action) => {
@@ -16,12 +16,12 @@ const effectReducer = (state = initialState, action) => {
         case effectContant.openInfoOffer :
          return {
             ...state,
-            listOfferAndInfoOffer :true
+            isShowOffers :true
          }
         case effectContant.closeInfoOffer :
             return {
                 ...state,
-                listOfferAndInfoOffer : false
+                isShowOffers : false
             }
         case effectContant.changeNotification : 
             return {

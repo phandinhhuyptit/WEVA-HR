@@ -1,32 +1,19 @@
 import React, { Component } from 'react';
-import {  Row , Col , Avatar,List ,Button, Spin }  from 'antd';
- class Notification extends Component {
+import { Row, Col, Avatar, List, Button, Spin } from 'antd';
+class Notification extends Component {
 
-        constructor(props) {
-            super(props)            
-        }
-
-     onLoadMore = () => {
-         this.props.onLoadMore();
-     }
+    constructor(props) {
+        super(props)
+    }
+    onLoadMore = () => {
+        this.props.onLoadMore();
+    }
     render() {
-        const {  endArray, Data ,initLoading } =this.props;
+        const { endArray, Data, initLoading } = this.props;
         return (
 
-            <div className="listOfNotification" style={{
-                width: '250px',
-                height: 'auto',
-                position: 'absolute',
-                left: '-100%',
-                backgroundColor: 'white',
-                opacity: '0',
-                transform: 'translate3d(0, -5%, 0)',
-                zIndex: '10',
-                borderRadius: '4px',
-                border: '1px solid #e8e8e8'
-            }}>
-
-            <h3 style={{
+            <div className="list-notification">
+                <h3 style={{
                     borderBottom: '1px solid #e8e8e8',
                     textAlign: 'center', marginBottom: '0',
                     fontWeight: '500',

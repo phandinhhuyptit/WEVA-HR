@@ -33,7 +33,7 @@ class sider extends Component {
     render() {
         const { toggleCollapsed, stateOfBackgroundAndFormOffer } = this.props
         return (
-            <Sider className="Sider"  width={200} style={{ background: "#fff",height : "100vh" }} collapsed={!this.props.toggleCollapsed}>
+            <Sider className="sider" width={200} style={{ background: "#fff", height: "100vh" }} collapsed={!this.props.toggleCollapsed}>
                 {
                     <CSSTransition
                         classNames="fade"
@@ -45,28 +45,17 @@ class sider extends Component {
                         <FormOffer />
                     </CSSTransition>
                 }
-                <Menu className='Menu' mode="inline"
+                <Menu className='menu' mode="inline"
                     defaultSelectedKeys={['1']}
-                    style={{
-                        height: "100%",
-                        borderRight: 0,
-                        backgroundColor: 'rgba(0, 0, 0, 0.08)',
-                        paddingTop: '10px',
-
-                    }}>
+                >
                     <MediaQuery query="(max-width :768px)">
                         {
                             toggleCollapsed ?
-                                <span className="Profile" style={{
-                                    paddingLeft: '15px',
-                                    alignItems: 'flex-end',
-                                    display: 'flex',
-                                    justifyContent: 'space-evenly'
-                                }}>
+                                <span className="profile">
                                     <Avatar style={{ width: '50px', height: '50px', border: '2px solid white' }} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                                     <span className="infoUser">
-                                        <p className="nameUser" style={{ fontSize: '11px', color: 'gray', fontWeight: '500' }}     >Welcome</p>
-                                        <p className="nameUser" style={{ fontSize: '12px', fontWeight: '600' }} >Phan Đình Huy</p>
+                                        <p style={{ fontSize: '11px', color: 'gray', fontWeight: '500' }}     >Welcome</p>
+                                        <p className="name-user" style={{ fontSize: '12px', fontWeight: '600' }} >Phan Đình Huy</p>
                                     </span>
                                 </span>
                                 : ''
@@ -85,32 +74,17 @@ class sider extends Component {
                             </Menu.Item>
                             : ''
                     }
-                    <Menu.Item className="Notification" style={{ display: 'none' }}>
+                    <Menu.Item className="notification" style={{ display: 'none' }}>
                         <Icon type="bell" />
-                        <span>
+                        <span className="menu-notification" >
                             Thông Báo
-                            <span style={{
-                                float: 'right',
-                                display: 'flex',
-                                background:'#2286ec',
-                                color: 'white',
-                                borderRadius: '2px',
-                                fontSize: '12px',
-                                width: '30px',
-                                height:'20px',
-                                position:'absolute',
-                                left:'80%',
-                                top:'23%',
-                                justifyContent:'center',
-                                alignItems:'center'
-                            }} >
-                               99+
-                        
+                            <span className="icon-count">
+                                99+
                             </span>
-                                </span>
+                        </span>
                     </Menu.Item>
-               
-                {/* {
+
+                    {/* {
                     toggleCollapsed ?
                         <h4 style={{ paddingLeft: '24px', color: 'gray', margin: '16px 0px 15px' }}> QUAN TRỌNG</h4>
                         : ''
@@ -120,44 +94,43 @@ class sider extends Component {
                         <Menu.Divider style={{ width: '170px', margin: 'auto', background: '#d6d4d4' }} />
                         : ''
                 } */}
-                <Menu.Item key="option1">
-                    <Icon type="menu" />
-                    <span>
-                        Tất Cả Đề Xuất
+                    <Menu.Item key="option1">
+                        <Icon type="menu" />
+                        <span>
+                            Tất Cả Đề Xuất
                         </span>
-                </Menu.Item>
-                <Menu.Item key="option2">
-                    <Icon type="clock-circle" />
-                    <span>
-                        Đang Chờ Duyệt
+                    </Menu.Item>
+                    <Menu.Item key="option2">
+                        <Icon type="clock-circle" />
+                        <span>
+                            Đang Chờ Duyệt
                         </span>
-                </Menu.Item>
-                <Menu.Item key="option3">
+                    </Menu.Item>
+                    <Menu.Item key="option3">
 
-                    <Icon type="check-circle" />
-                    <span>
-                        Đã Phê Duyệt
+                        <Icon type="check-circle" />
+                        <span>
+                            Đã Phê Duyệt
 
                               </span>
-                </Menu.Item>
-                <Menu.Item key="option4">
-
-                    <Icon type="close-circle" />
-                    <span>
-                        Đã Từ Chối
+                    </Menu.Item>
+                    <Menu.Item key="option4">
+                        <Icon type="close-circle" />
+                        <span>
+                            Đã Từ Chối
                             </span>
-                </Menu.Item>
+                    </Menu.Item>
 
-                {
-                    toggleCollapsed ?
-                        <Menu.Item className="Search" style={{ display: 'none' }}>
-                            <Input placeholder="Tìm Nhanh Yêu Cầu - Đề Xuất" prefix={<Icon type="search"
-                                style={{
-                                    color: 'rgba(0,0,0,.25)'
-                                }} />}
-                            />
-                        </Menu.Item>
-                        : ''}
+                    {
+                        toggleCollapsed ?
+                            <Menu.Item className="search" style={{ display: 'none' }}>
+                                <Input placeholder="Tìm Nhanh Yêu Cầu - Đề Xuất" prefix={<Icon type="search"
+                                    style={{
+                                        color: 'rgba(0,0,0,.25)'
+                                    }} />}
+                                />
+                            </Menu.Item>
+                            : ''}
                 </Menu>
             </Sider >
         )

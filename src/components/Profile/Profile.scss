@@ -1,0 +1,113 @@
+.tab-user {
+  .info-account {
+    .form-user {
+      .name {
+        .ant-col.ant-form-item-label {
+          display: flex;
+        }
+        input[type="text"] {
+          font-size: 12px;
+        }
+        .ant-form-item-control-wrapper {
+          @media only screen and( max-width : 575px) {
+            width: 80%;
+          }
+        }
+      }
+      .phone {
+        .ant-col.ant-form-item-label {
+          display: flex;
+        }
+        .ant-form-item-control-wrapper {
+          @media only screen and( max-width : 575px) {
+            width: 80%;
+          }
+        }
+        .ant-input-group-addon {
+          font-size: 12px;
+          button {
+            font-size: 12px;
+            background-color: rgb(92, 184, 92);
+            border-color: rgb(76, 174, 76);
+          }
+        }
+        input[type="number"] {
+          -moz-appearance: textfield;
+          font-size: 12px;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+      }
+      .code {
+        input[type="number"] {
+          font-size: 12px;
+        }
+        .ant-form-item-control-wrapper {
+          @media only screen and( max-width : 575px) {
+            width: 80%;
+          }
+        }
+        .ant-col.ant-form-item-label {
+          display: flex;
+        }
+        input[type="number"] {
+          -moz-appearance: textfield;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+      }
+      .email {
+        .ant-form-item-control-wrapper {
+          @media only screen and( max-width : 575px) {
+            width: 80%;
+          }
+        }
+        input[type="text"] {
+          font-size: 12px;
+        }
+        .ant-col.ant-form-item-label {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  .change-password {
+    .form-change-password {
+      .old-password {
+        .ant-col.ant-form-item-label {
+          display: flex;
+        }
+        .ant-form-item-control-wrapper {
+          @media only screen and( max-width : 575px) {
+            width: 80%;
+          }
+        }
+      }
+      .new-password {
+        .ant-col.ant-form-item-label {
+          display: flex;
+        }
+        .ant-form-item-control-wrapper {
+          @media only screen and( max-width : 575px) {
+            width: 80%;
+          }
+        }
+      }
+      .confirm-password {
+        .ant-col.ant-form-item-label {
+          display: flex;
+        }
+        .ant-form-item-control-wrapper {
+          @media only screen and( max-width : 575px) {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+}
