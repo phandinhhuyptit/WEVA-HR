@@ -31,8 +31,6 @@ const tailFormItemLayout = {
         },
     },
 };
-
-
 const rangeConfig = {
     rules: [{ type: 'array', required: true, message: 'Please select time!' }],
 };
@@ -41,7 +39,6 @@ export class offerForm extends Component {
     constructor(props) {
         super(props)
         this.textInput = React.createRef();
-
         this.state = {
         }
     }
@@ -51,7 +48,6 @@ export class offerForm extends Component {
     }
     handleChangeStateForm = () => {
         // Turn On Or Turn Off BackGround And Form Offer     
-
         this.props.onChangeStateForm();
     }
     render() {
