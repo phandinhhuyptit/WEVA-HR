@@ -33,10 +33,12 @@ class Background extends Component {
         )
     }
 }
+
 const mapStateToProps = (state) => ({
 
     stateFormOffer: state.effect.stateFormOffer,
-    stateNotification: state.effect.Notification
+    stateNotification: state.effect.Notification,
+    toggleCollapsed: state.app.toggleCollapsedOfSider
 
 })
 

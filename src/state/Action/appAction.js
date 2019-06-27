@@ -5,8 +5,8 @@ export const toogleCollapsed = () => {
         type: appContant.changeToggleCollapsed
     }
 }
-export const defaultSider =() =>{
+export const defaultSider = () => {
     return {
-         type : appContant.defaultSider
-    } 
+        type: appContant.defaultSider
+    }
 }

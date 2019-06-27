@@ -58,7 +58,6 @@ export class ListOffers extends Component {
                             }}
                         >
                             <Checkbox style={{
-
                                 whiteSpace: 'nowrap',
                                 textOverflow: 'ellipsis',
                                 overflow: 'hidden',
@@ -72,7 +71,6 @@ export class ListOffers extends Component {
                                         font: '16px'
                                     }}>
                                     Feb 26
-
                                 </span>
                                 <span className={parseInt(indexCurrent) === item.key ? 'activeFont' : ''}
                                     style={{

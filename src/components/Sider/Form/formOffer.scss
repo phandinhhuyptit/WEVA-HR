@@ -5,7 +5,7 @@
   width: 500px;
   height: auto;
   border-radius: 2px;
-  z-index: 2;
+  z-index: 3;
   text-replace: scale(0);
   @media only screen and (max-width: 575px) {
     width: 350px;
@@ -16,6 +16,7 @@
     background-color: white;
     padding-top: 15px;
     padding-bottom: 15px;
+    border-radius: 0 0 4px 4px;
     .name-offer {
       width: 100%;
       font-weight: 600;
@@ -72,5 +73,6 @@
     margin: 0;
     padding: 8px;
     font-size: 14px;
+    border-radius: 4px 4px 0 0px;
   }
 }
