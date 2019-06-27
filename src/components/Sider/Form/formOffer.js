@@ -19,6 +19,7 @@ const formItemLayout = {
         sm: { span: 19 },
     },
 };
+
 const tailFormItemLayout = {
     wrapperCol: {
         xs: {
@@ -31,10 +32,10 @@ const tailFormItemLayout = {
         },
     },
 };
+
 const rangeConfig = {
     rules: [{ type: 'array', required: true, message: 'Please select time!' }],
 };
-
 export class offerForm extends Component {
 
     constructor(props) {
@@ -42,7 +43,6 @@ export class offerForm extends Component {
         this.textInput = React.createRef();
 
         this.state = {
-
         }
     }
     static propTypes = {
@@ -54,15 +54,9 @@ export class offerForm extends Component {
 
         this.props.onChangeStateForm();
     }
-    // checkEsc = (e) => {
-
-    //     console.log("OK");
-
-    // }
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
-
             <div className="form-offer">
                 <Icon type="close" className="icon-form-offer" onClick={() => this.handleChangeStateForm()} />
                 <h3 className="title-offer">

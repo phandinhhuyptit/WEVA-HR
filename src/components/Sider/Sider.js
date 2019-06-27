@@ -10,30 +10,68 @@ import MediaQuery from 'react-responsive';
 import './Sider.scss';
 const { SubMenu } = Menu;
 const { Sider } = Layout;
+
+
 class sider extends Component {
     static propTypes = {
         toggleCollapsed: PropTypes.bool.isRequired,
         onChangeStateForm: PropTypes.func.isRequired,
         stateOfBackgroundAndFormOffer: PropTypes.bool.isRequired,
-        onDefaultSider: PropTypes.func
+        onDefaultSider: PropTypes.func,
+        onToogleCollapsed: PropTypes.func
     }
-    handleChangeStateForm = () => {
-        this.props.onChangeStateForm();
+    constructor(props) {
+        super(props);
+
+        window.addEventListener('DOMContentLoaded', this.test);
+
     }
-    componentDidMount = () => {
-        setInterval(() => {
-            const { toggleCollapsed } = this.props;
-            if (window.innerWidth > 768) {
-                if (toggleCollapsed === false) {
-                    this.props.onDefaultSider();
-                }
+
+    updateToogle = () => {
+        const { toggleCollapsed, onToogleCollapsed } = this.props;
+        if (window.innerWidth > 768) {
+            if (toggleCollapsed === false) {
+                onToogleCollapsed();
             }
-        }, 1000)
+        }
+        else if (window.innerWidth <= 767) {
+
+            if (toggleCollapsed === true) {
+                onToogleCollapsed();
+            }
+        }
+    }
+
+    handleChangeStateForm = () => {
+        const { onChangeStateForm } = this.props;
+        onChangeStateForm();
+    }
+
+    componentDidMount = () => {
+        const { onToogleCollapsed, toggleCollapsed } = this.props;
+        if (window.innerWidth <= 767) {
+            if (toggleCollapsed === true) {
+                onToogleCollapsed();
+            }
+        }
+        window.addEventListener('resize', this.updateToogle);
+    }
+
+    handleChangeToogle = () => {
+
+        const { toggleCollapsed, onToogleCollapsed } = this.props;
+        if (toggleCollapsed === true) {
+            onToogleCollapsed();
+
+        }
+
     }
     render() {
-        const { toggleCollapsed, stateOfBackgroundAndFormOffer } = this.props
+
+        const { toggleCollapsed, stateOfBackgroundAndFormOffer } = this.props;
+        const backgroundOfSider = <div className="background-of-sider" onClick={() => this.handleChangeToogle()}></div>
         return (
-            <Sider className="sider" width={200} style={{ background: "#fff", height: "100vh" }} collapsed={!this.props.toggleCollapsed}>
+            <React.Fragment>
                 {
                     <CSSTransition
                         classNames="fade"
@@ -45,46 +83,68 @@ class sider extends Component {
                         <FormOffer />
                     </CSSTransition>
                 }
-                <Menu className='menu' mode="inline"
-                    defaultSelectedKeys={['1']}
-                >
-                    <MediaQuery query="(max-width :768px)">
+
+                <MediaQuery maxWidth={768}>
+                    {(matches) => {
+                        if (matches) {
+                            return <CSSTransition
+                                classNames="BackGround"
+                                in={toggleCollapsed}
+                                timeout={500}
+                                enter={true}
+                                exit={true}
+                            >
+                                {
+                                    toggleCollapsed ? backgroundOfSider : <React.Fragment></React.Fragment>
+                                }
+                            </CSSTransition>;
+                        } else {
+                            return <div style={{ display: 'none' }}>Media query does not match!</div>;
+                        }
+                    }}
+                </MediaQuery>
+                <Sider width={200} className="sider" style={{}} collapsed={!this.props.toggleCollapsed} >
+
+                    <Menu className='menu' mode="inline"
+                        defaultSelectedKeys={['1']}
+                    >
+                        <MediaQuery query="(max-width :768px)">
+                            {
+                                toggleCollapsed ?
+                                    <span className="profile">
+                                        <Avatar style={{ width: '50px', height: '50px', border: '2px solid white' }} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                                        <span className="infoUser">
+                                            <p style={{ fontSize: '11px', color: 'gray', fontWeight: '500' }}     >Xin Chào</p>
+                                            <p className="name-user" style={{ fontSize: '12px', fontWeight: '600' }} >Phan Đình Huy</p>
+                                        </span>
+                                    </span>
+                                    : ''
+                            }
+                        </MediaQuery>
                         {
                             toggleCollapsed ?
-                                <span className="profile">
-                                    <Avatar style={{ width: '50px', height: '50px', border: '2px solid white' }} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                                    <span className="infoUser">
-                                        <p style={{ fontSize: '11px', color: 'gray', fontWeight: '500' }}     >Welcome</p>
-                                        <p className="name-user" style={{ fontSize: '12px', fontWeight: '600' }} >Phan Đình Huy</p>
-                                    </span>
-                                </span>
+                                <Menu.Item style={{ marginTop: '10px' }}>
+                                    <Button style={{
+                                        color: '#fff',
+                                        backgroundColor: '#5cb85c',
+                                        borderColor: '#4cae4c'
+                                    }} icon="plus" onClick={() => this.handleChangeStateForm()} >
+                                        Tạo Đề Xuất Mới
+                                    </Button>
+                                </Menu.Item>
                                 : ''
                         }
-                    </MediaQuery>
-                    {
-                        toggleCollapsed ?
-                            <Menu.Item style={{ marginTop: '10px' }}>
-                                <Button style={{
-                                    color: '#fff',
-                                    backgroundColor: '#5cb85c',
-                                    borderColor: '#4cae4c'
-                                }} icon="plus" onClick={() => this.handleChangeStateForm()} >
-                                    Tạo Đề Xuất Mới
-                                    </Button>
-                            </Menu.Item>
-                            : ''
-                    }
-                    <Menu.Item className="notification" style={{ display: 'none' }}>
-                        <Icon type="bell" />
-                        <span className="menu-notification" >
-                            Thông Báo
+                        <Menu.Item className="notification" style={{ display: 'none' }}>
+                            <Icon type="bell" />
+                            <span className="menu-notification" >
+                                Thông Báo
                             <span className="icon-count">
-                                99+
+                                    99+
                             </span>
-                        </span>
-                    </Menu.Item>
+                            </span>
+                        </Menu.Item>
 
-                    {/* {
+                        {/* {
                     toggleCollapsed ?
                         <h4 style={{ paddingLeft: '24px', color: 'gray', margin: '16px 0px 15px' }}> QUAN TRỌNG</h4>
                         : ''
@@ -94,45 +154,47 @@ class sider extends Component {
                         <Menu.Divider style={{ width: '170px', margin: 'auto', background: '#d6d4d4' }} />
                         : ''
                 } */}
-                    <Menu.Item key="option1">
-                        <Icon type="menu" />
-                        <span>
-                            Tất Cả Đề Xuất
-                        </span>
-                    </Menu.Item>
-                    <Menu.Item key="option2">
-                        <Icon type="clock-circle" />
-                        <span>
-                            Đang Chờ Duyệt
-                        </span>
-                    </Menu.Item>
-                    <Menu.Item key="option3">
 
-                        <Icon type="check-circle" />
-                        <span>
-                            Đã Phê Duyệt
+                        <Menu.Item key="option1">
+                            <Icon type="menu" />
+                            <span>
+                                Tất Cả Đề Xuất
+                        </span>
+                        </Menu.Item>
+                        <Menu.Item key="option2">
+                            <Icon type="clock-circle" />
+                            <span>
+                                Đang Chờ Duyệt
+                        </span>
+                        </Menu.Item>
+                        <Menu.Item key="option3">
+
+                            <Icon type="check-circle" />
+                            <span>
+                                Đã Phê Duyệt
 
                               </span>
-                    </Menu.Item>
-                    <Menu.Item key="option4">
-                        <Icon type="close-circle" />
-                        <span>
-                            Đã Từ Chối
+                        </Menu.Item>
+                        <Menu.Item key="option4">
+                            <Icon type="close-circle" />
+                            <span>
+                                Đã Từ Chối
                             </span>
-                    </Menu.Item>
+                        </Menu.Item>
 
-                    {
-                        toggleCollapsed ?
-                            <Menu.Item className="search" style={{ display: 'none' }}>
-                                <Input placeholder="Tìm Nhanh Yêu Cầu - Đề Xuất" prefix={<Icon type="search"
-                                    style={{
-                                        color: 'rgba(0,0,0,.25)'
-                                    }} />}
-                                />
-                            </Menu.Item>
-                            : ''}
-                </Menu>
-            </Sider >
+                        {
+                            toggleCollapsed ?
+                                <Menu.Item className="search" style={{ display: 'none' }}>
+                                    <Input placeholder="Tìm Nhanh Yêu Cầu - Đề Xuất" prefix={<Icon type="search"
+                                        style={{
+                                            color: 'rgba(0,0,0,.25)'
+                                        }} />}
+                                    />
+                                </Menu.Item>
+                                : ''}
+                    </Menu>
+                </Sider >
+            </React.Fragment>
         )
     }
 }
@@ -147,8 +209,8 @@ const mapDispatchToProps = (dispatch) => {
         onChangeStateForm: () => {
             dispatch(effectAction.changeStateForm())
         },
-        onDefaultSider: () => {
-            dispatch(appAction.defaultSider())
+        onToogleCollapsed: () => {
+            dispatch(appAction.toogleCollapsed())
         }
     }
 }

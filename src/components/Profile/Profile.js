@@ -51,7 +51,7 @@ export class Profile extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
-            <Content>
+            <Content className="info-profile" >
                 <Row style={{ width: '100%', margin: '25px 25px 0 25px' }}>
 
                     <h2 style={{ marginBottom: '30px', fontSize: '23px', color: 'gray' }}> Hồ Sơ Của Tôi</h2>

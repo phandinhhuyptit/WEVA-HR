@@ -140,7 +140,6 @@ class header extends Component {
     }
     handleState = () => {
         const { stateNotification, onChangeStateNotification } = this.props;
-
         if (stateNotification) {
             onChangeStateNotification();
         }
@@ -152,9 +151,9 @@ class header extends Component {
             <Header className="header">
                 {/* <Icon className="trigger" type={this.props.toggleCollapsed ? 'menu-unfold' : 'menu-fold'}
                 onClick={this.toggleCollapsed} style={{ fontSize: '20px', color: 'white', marginRight: '20px' }} /> */}
-                <Menu
+                <Menu className="main-menu"
                     theme="dark"
-                    style={{ lineHeight: '58px', backgroundColor: '#084D17' }}
+                    style={{ lineHeight: '58px', backgroundColor: '#084D17', height: '64px', position: 'fixed', zIndex: '2', left: '0', width: '100%', padding: '0 10px' }}
                 >
                     <Menu.Item className="menu"
                         key="Menu1"
