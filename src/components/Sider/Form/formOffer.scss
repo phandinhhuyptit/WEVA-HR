@@ -67,6 +67,9 @@
     top: 2%;
     font-size: 13px;
     cursor: pointer;
+    @media only screen and (max-width: 575px) {
+      left: 95% !important;
+    }
   }
   .title-offer {
     background-color: rgb(234, 234, 234);

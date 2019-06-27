@@ -11,7 +11,6 @@ import './Sider.scss';
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
-
 class sider extends Component {
     static propTypes = {
         toggleCollapsed: PropTypes.bool.isRequired,
@@ -22,11 +21,7 @@ class sider extends Component {
     }
     constructor(props) {
         super(props);
-
-        window.addEventListener('DOMContentLoaded', this.test);
-
     }
-
     updateToogle = () => {
         const { toggleCollapsed, onToogleCollapsed } = this.props;
         if (window.innerWidth > 768) {
@@ -43,7 +38,10 @@ class sider extends Component {
     }
 
     handleChangeStateForm = () => {
-        const { onChangeStateForm } = this.props;
+        const { onChangeStateForm, toggleCollapsed, onToogleCollapsed } = this.props;
+        if (toggleCollapsed && window.innerWidth <= 767) {
+            onToogleCollapsed();
+        }
         onChangeStateForm();
     }
 
@@ -62,10 +60,9 @@ class sider extends Component {
         const { toggleCollapsed, onToogleCollapsed } = this.props;
         if (toggleCollapsed === true) {
             onToogleCollapsed();
-
         }
-
     }
+
     render() {
 
         const { toggleCollapsed, stateOfBackgroundAndFormOffer } = this.props;
@@ -181,7 +178,6 @@ class sider extends Component {
                                 Đã Từ Chối
                             </span>
                         </Menu.Item>
-
                         {
                             toggleCollapsed ?
                                 <Menu.Item className="search" style={{ display: 'none' }}>
