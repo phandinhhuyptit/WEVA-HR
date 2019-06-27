@@ -35,24 +35,22 @@ const menu = (
         <Menu.Item key="3">3rd menu item</Menu.Item>
     </Menu>
 );
-
 const menuAccount = (
-    <Menu className="menuAccount">
-        <div className="titleAccount">
+    <Menu className="menu-account">
+        <div className="title-account">
             <h3 style={{ margin: 0, color: '#73818f' }} > Tài Khoản </h3>
         </div>
-
         <Menu.Item style={{ display: 'flex', alignItems: 'center' }} key="0">
             <Icon type="user" />
-            <Link className="Profile" to='/Profile'>Tài Khoản Của Tôi</Link>
+            <Link className="profile" to='/Profile'>Tài Khoản Của Tôi</Link>
         </Menu.Item>
         <Menu.Item style={{ display: 'flex', alignItems: 'center' }} key="1">
             <Icon type="tool" />
-            <Link className="Setting" to='/Setting'>Cài Đặt</Link>
+            <Link className="setting" to='/Setting'>Cài Đặt</Link>
         </Menu.Item>
         <Menu.Item style={{ display: 'flex', alignItems: 'center' }} key="2">
             <Icon type="logout" />
-            <Link className="Logout" to="/Logout">Đăng Xuất</Link>
+            <Link className="logout" to="/Logout">Đăng Xuất</Link>
         </Menu.Item>
     </Menu>
 )
@@ -80,6 +78,7 @@ class header extends Component {
         endArray: false
 
     }
+
     onLoadMore = () => {
         const { indexOfArray, Data } = this.state;
         const gettingDistanceOfArray = 6;
@@ -139,10 +138,16 @@ class header extends Component {
             initLoading: false,
         });
     }
+    handleState = () => {
+        const { stateNotification, onChangeStateNotification } = this.props;
 
+        if (stateNotification) {
+            onChangeStateNotification();
+        }
+    }
     render() {
         const { initLoading, Data, endArray } = this.state;
-        const { stateNotification,toggleCollapsed } = this.props;
+        const { stateNotification, toggleCollapsed } = this.props;
         return (
             <Header className="header">
                 {/* <Icon className="trigger" type={this.props.toggleCollapsed ? 'menu-unfold' : 'menu-fold'}
@@ -151,7 +156,7 @@ class header extends Component {
                     theme="dark"
                     style={{ lineHeight: '58px', backgroundColor: '#084D17' }}
                 >
-                    <Menu.Item className="menu" 
+                    <Menu.Item className="menu"
                         key="Menu1"
                     >
                         <Icon className="trigger" type={toggleCollapsed ? 'menu-unfold' : 'menu-fold'}
@@ -171,7 +176,7 @@ class header extends Component {
                         </span>
                     </Menu.Item>
                     <Menu.Item className="search" style={{
-                        
+
                     }}
                         key="Menu3"
                     >
@@ -180,11 +185,7 @@ class header extends Component {
                             style={{ width: '400px' }}
                         />
                     </Menu.Item>
-                    <Menu.Item className="account" style={{
-                       
-                    }}
-                        key="Menu4"
-                    >
+                    <Menu.Item onClick={() => this.handleState()} className="account" key="Menu4">
                         <Dropdown className="drop-down-menu-account" overlay={menuAccount} trigger={['click']}>
                             <span className="profile">
                                 <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
@@ -208,17 +209,17 @@ class header extends Component {
                                 justifyContent: 'center',
                                 zIndex: '0'
                             }}>
-                                <Icon className="bell" type='bell' style={{ fontSize: '19px', color: 'white', marginRight: '0px' }} />
+                                <Icon className="bell" type='bell' />
                             </Badge>
                         </span>
                         <CSSTransition
                             classNames="fadeNotification"
-                            in ={stateNotification}
+                            in={stateNotification}
                             appear={true}
                             enter={true}
                             timeout={500}
                         >
-                           {  stateNotification ? <Notification endArray={endArray} Data={Data} initLoading={initLoading} onLoadMore={this.onLoadMore} />  : <div></div>}   
+                            {stateNotification ? <Notification endArray={endArray} Data={Data} initLoading={initLoading} onLoadMore={this.onLoadMore} /> : <div></div>}
                         </CSSTransition>
                     </Menu.Item>
                 </Menu>
