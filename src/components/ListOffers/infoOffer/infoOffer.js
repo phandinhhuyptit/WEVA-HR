@@ -11,13 +11,11 @@ export class InfoOffer extends Component {
     closeInfoOffer = () => {
         this.props.onCloseInfoOffer()
     }
-
     render() {
         return (
             <div className="info-offer">
                 <Icon className="icon-close" type="close" onClick={() => this.closeInfoOffer()} />
                 <h2 className="title-info" style={{ marginTop: "8px" }}>
-
                     Xin Nghỉ Ngày 16/6 Và 17/6
                 </h2>
                 <p className="time" style={{ color: "gray", fontSize: "10px" }}>

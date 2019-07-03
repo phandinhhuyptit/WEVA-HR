@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { Form, Row, Col, Select, AutoComplete, Input, DatePicker, Button, Icon } from 'antd';
-import { connect } from 'react-redux'
-import './formOffer.scss'
+import { connect } from 'react-redux';
+import './formOffer.scss';
 import * as effectAction from '../../../state/Action/effectAction';
 const { MonthPicker, RangePicker } = DatePicker;
 const { Option } = Select;
@@ -31,10 +31,11 @@ const tailFormItemLayout = {
         },
     },
 };
+
+
 const rangeConfig = {
     rules: [{ type: 'array', required: true, message: 'Please select time!' }],
 };
-
 export class offerForm extends Component {
 
     constructor(props) {
@@ -42,7 +43,6 @@ export class offerForm extends Component {
         this.textInput = React.createRef();
 
         this.state = {
-
         }
     }
     static propTypes = {
@@ -54,15 +54,9 @@ export class offerForm extends Component {
 
         this.props.onChangeStateForm();
     }
-    // checkEsc = (e) => {
-
-    //     console.log("OK");
-
-    // }
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
-
             <div className="form-offer">
                 <Icon type="close" className="icon-form-offer" onClick={() => this.handleChangeStateForm()} />
                 <h3 className="title-offer">
@@ -156,7 +150,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state) => {
     return {
-        stateFormOffer: state.effect.stateFormOffer
+        stateFormOffer: state.effect.stateFormOffer,
+        toggleCollapsed: state.app.toggleCollapsedOfSider
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(WrappedOfferForm)
